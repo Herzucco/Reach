@@ -5,6 +5,7 @@ public enum Player{
 	ONE,
 	TWO
 }
+
 public class GameManager : BaseManager {
 	private static Player _player;
 	public static Player player{
