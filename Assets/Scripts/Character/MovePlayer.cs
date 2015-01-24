@@ -67,8 +67,8 @@ public class MovePlayer : MonoBehaviour {
 			currentAction();
 		}
 		grounded = IsGrounded ();
-		moveVec.z = Input.GetAxis ("VerticalPad");
-		moveVec.x = Input.GetAxis ("HorizontalPad");
+		moveVec.z = Input.GetAxis ("Vertical");
+		moveVec.x = Input.GetAxis ("Horizontal");
 		if(moveVec.z != 0 || moveVec.x != 0){
 			moveVec.z = Input.GetAxis ("Vertical");
 			moveVec.x = Input.GetAxis ("Horizontal");
