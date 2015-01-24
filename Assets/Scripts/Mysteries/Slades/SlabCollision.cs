@@ -12,10 +12,15 @@ public class SlabCollision : Collision {
     }
     protected override void PlayerEnter(GameObject player)
     {
-
         if (_isActivated)
+        {
+            renderer.material.color = Color.red;
             _isActivated = false;
+        }
         else
+        {
+            renderer.material.color = Color.green;
             _isActivated = true;
+        }
     }
 }
