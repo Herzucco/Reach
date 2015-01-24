@@ -36,9 +36,8 @@ public class SlabsPattern : Mystery {
             }
         }
 
-        if (_slabNumber == slabNumber)
+        if (_slabNumber == slabNumber && !isResolved)
         {
-            Debug.Log("toto");
             Resolve();
         }
 
