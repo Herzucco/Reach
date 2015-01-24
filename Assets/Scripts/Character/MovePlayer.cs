@@ -62,6 +62,10 @@ public class MovePlayer : MonoBehaviour {
 		cam = Camera.main.transform;
 	}
 
+	void Start(){
+		//cam.transform.parent = mTransform.parent;
+	}
+
 	void Update(){
 		if(Input.GetAxis("Hello") > 0){
 			moving = false;
@@ -79,14 +83,14 @@ public class MovePlayer : MonoBehaviour {
 		}
 		grounded = IsGrounded ();
 		moveVec.z = Input.GetAxis ("Vertical");
-		moveVec.x = Input.GetAxis ("Horizontal");
-		rotX = cam.localRotation.eulerAngles.x - Input.GetAxis ("Mouse Y") * rotationSpeedX;
+		//moveVec.x = Input.GetAxis ("Horizontal");
+		/*rotX = cam.localRotation.eulerAngles.x - Input.GetAxis ("Mouse Y") * rotationSpeedX;
 		if(rotX >80 && rotX < 100){
 			rotX = 80;
 		}else if(rotX < 280 && rotX > 200){
 			rotX = 280;
-		}
-		rotY = Input.GetAxis ("Mouse X") * rotationSpeedY;
+		}*/
+		rotY = Input.GetAxis ("Horizontal") * rotationSpeedY;
 		if(jumping || grounded){
 			jumping = Input.GetAxis ("Jump") > 0;
 			if(jumping)
@@ -103,7 +107,7 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void LateUpdate(){
-		cam.localRotation = Quaternion.Euler (rotX, 0, 0);
+		//cam.localRotation = Quaternion.Euler (rotX, 0, 0);
 	}
 
 	bool IsGrounded(){
