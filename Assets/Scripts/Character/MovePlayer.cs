@@ -70,7 +70,7 @@ public class MovePlayer : MonoBehaviour {
 		moveVec.z = Input.GetAxis ("Vertical");
 		moveVec.x = Input.GetAxis ("Horizontal");
 		rotX = cam.localRotation.eulerAngles.x - Input.GetAxis ("Mouse Y") * rotationSpeedX;
-		if(Mathf.Abs(rotX) < 0.1)
+		if(Mathf.Abs(rotX) < 0.2)
 			rotX = 0;
 		if(rotX >80 && rotX < 100){
 			rotX = 80;
@@ -78,7 +78,7 @@ public class MovePlayer : MonoBehaviour {
 			rotX = 280;
 		}
 		rotY = Input.GetAxis ("Mouse X") * rotationSpeedY;
-		if(Mathf.Abs(rotY) < 0.1)
+		if(Mathf.Abs(rotY) < 0.2)
 			rotY = 0;
 		if(jumping || grounded){
 			jumping = Input.GetAxis ("Jump") > 0;
