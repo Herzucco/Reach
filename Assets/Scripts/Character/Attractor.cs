@@ -6,7 +6,7 @@ public class Attractor : MonoBehaviour {
 
 	[SerializeField]
 	[Range(0,100)]
-	private float gravity;
+	public float gravity;
 	[SerializeField]
 	private float rotationRate;
 	private List<AttractedBody> bodies;
