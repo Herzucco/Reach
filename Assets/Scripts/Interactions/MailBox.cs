@@ -5,6 +5,7 @@ using System.Collections;
 public class MailBox : ContextAction {
 	public Transform oneSpawn;
 	public Transform twoSpawn;
+
 	public Renderer renderer;
 	public bool isFull = false;
 
@@ -18,16 +19,18 @@ public class MailBox : ContextAction {
 
 	public override void Action ()
 	{
-		TriggerMailBox ();
 		if (isFull) {
+			ActionName = "Read";
 
 		} else {
-
+			ActionName = "Send";
+			TriggerMailBox ();
 		}
 	}
 
 	[RPC]
 	protected virtual void ListenMailBox(){
+		Debug.Log ("La mort");
 	}
 	
 	public virtual void TriggerMailBox(){
