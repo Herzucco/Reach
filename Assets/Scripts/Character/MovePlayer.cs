@@ -44,7 +44,9 @@ public class MovePlayer : MonoBehaviour {
 	float currentActionInput;
 	float oldJumpInput;
 	float currentJumpInput;
-	bool helloing;
+
+	[HideInInspector]
+	public bool helloing;
 
 	void Awake(){
 		helloing = false;

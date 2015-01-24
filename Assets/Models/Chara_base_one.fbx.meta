@@ -1,0 +1,160 @@
+fileFormatVersion: 2
+guid: 2f55c38c0b3d14893b3f88c1b2e61a6b
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Ankle_L_CTRL
+    100002: Ankle_L_GRP
+    100004: Ankle_L_JNT
+    100006: Ankle_R_CTRL
+    100008: Ankle_R_GRP
+    100010: Ankle_R_JNT
+    100012: Arm_L_CTRL
+    100014: Arm_L_GRP
+    100016: Arm_L_IKHL
+    100018: Arm_L_LCT
+    100020: Arm_R_GRP
+    100022: Arm_R_GRP 1
+    100024: Arm_R_IKHL
+    100026: Arm_R_LCT
+    100028: //RootNode
+    100030: Chest_CTRL
+    100032: Chest_GRP
+    100034: Chest_JNT
+    100036: Elbow_L_JNT
+    100038: Elbow_R_JNT
+    100040: Finger_L_JNT
+    100042: Finger_R_JNT
+    100044: Head_JNT
+    100046: Knee_L_JNT
+    100048: Knee_R_JNT
+    100050: Leg_L_IKHL
+    100052: Leg_L_JNT
+    100054: Leg_L_LCT
+    100056: Leg_R_IKHL
+    100058: Leg_R_JNT
+    100060: Leg_R_LCT
+    100062: Mesh_astronaut
+    100064: Neck_CTRL
+    100066: Neck_GRP
+    100068: Neck_JNT
+    100070: Root_CTRL
+    100072: Root_GRP
+    100074: Root_JNT
+    100076: Shoulder_L_JNT
+    100078: Shoulder_R_JNT
+    100080: Spine_CTRL
+    100082: Spine_GRP
+    100084: Spine_JNT
+    100086: Toe_R_JNT
+    100088: Toe_R_JNT 1
+    100090: Ultimate_CTRL
+    100092: Ultimate_CTRL 1
+    100094: Wirst_L_JNT
+    100096: Wirst_R_JNT
+    400000: Ankle_L_CTRL
+    400002: Ankle_L_GRP
+    400004: Ankle_L_JNT
+    400006: Ankle_R_CTRL
+    400008: Ankle_R_GRP
+    400010: Ankle_R_JNT
+    400012: Arm_L_CTRL
+    400014: Arm_L_GRP
+    400016: Arm_L_IKHL
+    400018: Arm_L_LCT
+    400020: Arm_R_GRP
+    400022: Arm_R_GRP 1
+    400024: Arm_R_IKHL
+    400026: Arm_R_LCT
+    400028: //RootNode
+    400030: Chest_CTRL
+    400032: Chest_GRP
+    400034: Chest_JNT
+    400036: Elbow_L_JNT
+    400038: Elbow_R_JNT
+    400040: Finger_L_JNT
+    400042: Finger_R_JNT
+    400044: Head_JNT
+    400046: Knee_L_JNT
+    400048: Knee_R_JNT
+    400050: Leg_L_IKHL
+    400052: Leg_L_JNT
+    400054: Leg_L_LCT
+    400056: Leg_R_IKHL
+    400058: Leg_R_JNT
+    400060: Leg_R_LCT
+    400062: Mesh_astronaut
+    400064: Neck_CTRL
+    400066: Neck_GRP
+    400068: Neck_JNT
+    400070: Root_CTRL
+    400072: Root_GRP
+    400074: Root_JNT
+    400076: Shoulder_L_JNT
+    400078: Shoulder_R_JNT
+    400080: Spine_CTRL
+    400082: Spine_GRP
+    400084: Spine_JNT
+    400086: Toe_R_JNT
+    400088: Toe_R_JNT 1
+    400090: Ultimate_CTRL
+    400092: Ultimate_CTRL 1
+    400094: Wirst_L_JNT
+    400096: Wirst_R_JNT
+    4300000: Mesh_astronaut
+    9500000: //RootNode
+    13700000: Mesh_astronaut
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

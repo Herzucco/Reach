@@ -15,7 +15,12 @@ public class MailBox : ContextAction {
 	protected virtual void Start(){
 		photonView = GetComponent<PhotonView> ();
 		GameManager.OnPlayerSet += OnGameReady;
+		soundSource = GetComponent<AudioSource>();
 	}
+
+	public AudioClip inboxSound;
+	public AudioClip outboxSound;
+	protected AudioSource soundSource;
 
 	public override void Action ()
 	{
@@ -36,6 +41,8 @@ public class MailBox : ContextAction {
 			ActionName = "Read";
 		} else {
 			ActionName = "Send";
+			soundSource.clip = inboxSound;
+			soundSource.Play();
 		}
 	}
 
@@ -47,6 +54,9 @@ public class MailBox : ContextAction {
 		receivedTexture.LoadImage(receivedByte);
 		isFull = true;
 		ActionName = "Read";
+
+		soundSource.clip = outboxSound;
+		soundSource.Play();
 	}
 	
 	public virtual void TriggerMailBox(){

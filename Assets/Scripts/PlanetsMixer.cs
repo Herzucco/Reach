@@ -10,6 +10,14 @@ public class PlanetsMixer : MonoBehaviour {
 	[SerializeField]
 	Transform[] planetes;
 	int currentState = 0;
+	public int CurrentState{
+		get{
+			return currentState;
+		}
+	}
+	public int StateNumbers{
+		get{return totalSteps;}
+	}
 
 	void OnEnable(){
 		GameManager.OnPlayerSet += SetPlanetes;

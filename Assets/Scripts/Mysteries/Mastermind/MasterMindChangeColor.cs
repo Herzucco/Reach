@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MasterMindChangeColor : ContextAction {
 
+    public GameObject sphere;
     private Color[] _color = new Color[3];
     private int index = 0;
 
@@ -29,7 +30,7 @@ public class MasterMindChangeColor : ContextAction {
             index = 0;
         }
 
-        renderer.material.color = _color[index];
+        sphere.renderer.material.color = _color[index];
 
         ChangeColor(_color[index]);
     }
