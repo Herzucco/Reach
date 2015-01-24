@@ -7,14 +7,15 @@ public class SlabsPattern : Mystery {
     [Header("The number of mandatory slades for the pattern to validate")]
     public int slabNumber;
 
-   private GameObject[] _slabs = new GameObject[4];
-   private SlabCollision[] _mysteriesSlab = new SlabCollision[4];
+   private GameObject[] _slabs;
+	private SlabCollision[] _mysteriesSlab;
    private int _slabNumber;
 
     private void Start()
     {
         _slabs = GameObject.FindGameObjectsWithTag("Slabs");
-        
+		_mysteriesSlab = new SlabCollision[_slabs.Length];
+
         for(int i = 0; i < _slabs.Length; i++)
         {
             if( _slabs[i].GetComponent<SlabCollision>() != null)
