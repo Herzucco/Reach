@@ -42,6 +42,8 @@ public class MovePlayer : MonoBehaviour {
 	float _jumpedTime;
 	float oldActionInput;
 	float currentActionInput;
+	float oldJumpInput;
+	float currentJumpInput;
 	bool helloing;
 
 	void Awake(){
@@ -57,6 +59,9 @@ public class MovePlayer : MonoBehaviour {
 		mTransform = transform;
 		moveVec = Vector3.zero;
 		cam = Camera.main.transform;
+		oldJumpInput=0;
+		currentJumpInput=0;
+
 	}
 
 	void Update(){
@@ -73,14 +78,17 @@ public class MovePlayer : MonoBehaviour {
 			return;
 		oldActionInput = currentActionInput;
 		currentActionInput = Input.GetAxis ("Action");
+		oldJumpInput = currentJumpInput;
+		currentJumpInput = Input.GetAxis ("Jump");
 		if(currentActionInput == 1 && oldActionInput == 0 && currentAction != null){
 			currentAction();
 		}
 		moveVec.z = Input.GetAxis ("Vertical");
 		rotY = Input.GetAxis ("Horizontal") * rotationSpeedY;
-		if(jumping || grounded){
-			jumping = Input.GetAxis ("Jump") > 0;
-			if(jumping)
+		Debug.Log(grounded);
+		if((currentJumpInput > 0.5 && !grounded)){
+			jumping = true;
+			if(grounded)
 				_jumpedTime = 0;
 		}
 	}
@@ -95,7 +103,8 @@ public class MovePlayer : MonoBehaviour {
 
 
 	bool IsGrounded(){
-		return Physics.Raycast(mTransform.position, -mTransform.up, 2);
+		Debug.Log ("toto");
+		return Physics.Raycast(mTransform.position + mTransform.up * 1, -mTransform.up, 35f);
 	}
 
 	void Jump(){
@@ -104,7 +113,7 @@ public class MovePlayer : MonoBehaviour {
 			moveVec.y = jumpCurve.Evaluate(_jumpedTime / jumpDuration) * jumpForce;
 			if(_jumpedTime > jumpDuration){
 				jumping = false;
-				_jumpedTime = jumpDuration;
+				_jumpedTime = jumpDuration+10;
 			}
 		}else{
 			moveVec.y = Mathf.Lerp(moveVec.y, 0, smoothingForce);
