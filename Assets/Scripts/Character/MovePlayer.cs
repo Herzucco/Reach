@@ -59,6 +59,7 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void Update(){
+		Debug.Log (Input.GetAxis ("HorizontalLol"));
 		if(!moving)
 			return;
 		oldActionInput = currentActionInput;
