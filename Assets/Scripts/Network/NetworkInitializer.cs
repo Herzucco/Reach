@@ -32,6 +32,7 @@ public class NetworkInitializer : Photon.MonoBehaviour
 			int newCount = PhotonNetwork.playerList.Length;
 			
 			if(newCount < playerCount){
+				PhotonNetwork.LeaveRoom();
 				Application.LoadLevel("Deco");
 				Screen.showCursor = true;
 			}else if(newCount > playerCount){

@@ -30,6 +30,8 @@ public class MailBox : ContextAction {
 			snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
 			snap.SetTexture(receivedTexture);
 			ActionName = "Send";
+			soundSource.clip = inboxSound;
+			soundSource.Play();
 		} else {
 			snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
 
@@ -42,8 +44,6 @@ public class MailBox : ContextAction {
 			ActionName = "Read";
 		} else {
 			ActionName = "Send";
-			soundSource.clip = inboxSound;
-			soundSource.Play();
 		}
 	}
 
