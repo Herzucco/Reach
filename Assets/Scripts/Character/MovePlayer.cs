@@ -44,7 +44,9 @@ public class MovePlayer : MonoBehaviour {
 	float currentActionInput;
 	float oldJumpInput;
 	float currentJumpInput;
-	bool helloing;
+
+	[HideInInspector]
+	public bool helloing;
 
 	void Awake(){
 		helloing = false;
@@ -85,7 +87,6 @@ public class MovePlayer : MonoBehaviour {
 		}
 		moveVec.z = Input.GetAxis ("Vertical");
 		rotY = Input.GetAxis ("Horizontal") * rotationSpeedY;
-		Debug.Log(grounded);
 		if((currentJumpInput > 0.5 && !grounded)){
 			jumping = true;
 			if(grounded)
@@ -103,7 +104,6 @@ public class MovePlayer : MonoBehaviour {
 
 
 	bool IsGrounded(){
-		Debug.Log ("toto");
 		return Physics.Raycast(mTransform.position + mTransform.up * 1, -mTransform.up, 35f);
 	}
 

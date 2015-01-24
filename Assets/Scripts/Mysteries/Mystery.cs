@@ -8,7 +8,7 @@ public class Mystery : MonoBehaviour {
 		spawn = transform.parent.gameObject.GetComponent<MysterySpawn>();
 	}
 
-	protected virtual void Resolve(){
+	public virtual void Resolve(){
         if (!isResolved)
         {
             isResolved = true;
