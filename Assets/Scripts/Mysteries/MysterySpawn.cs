@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof (PhotonView))]
 public class MysterySpawn : MonoBehaviour {
 	public Mysteries id;
 	public GameObject OnePrefab;
@@ -9,7 +10,7 @@ public class MysterySpawn : MonoBehaviour {
 	private PhotonView photonView;
 
 	protected virtual void Start(){
-		photonView = gameObject.AddComponent<PhotonView> ();
+		photonView = GetComponent<PhotonView> ();
 		OnePrefab.SetActive(false);
 		TwoPrefab.SetActive(false);
 		GameManager.OnPlayerSet += SpawnPrefab;
