@@ -16,6 +16,7 @@ public class MasterMindChangeColor : ContextAction {
     protected void Awake()
     {
         base.Awake();
+        _enumColor = EnumColor.DEFAULT;
         _color[0] = Color.red;
         _color[1] = Color.green;
         _color[2] = Color.blue;
