@@ -134,6 +134,7 @@ public class MovePlayer : MonoBehaviour {
 		if (helloing != true) {
 			helloing = true;
 			helloSound.Play ();
+			GetComponent<HelloDeclencher>().TriggerHello();
 			yield return new WaitForSeconds (2);
 			moving = true;
 			helloing = false;
