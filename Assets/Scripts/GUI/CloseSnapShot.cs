@@ -8,9 +8,7 @@ public class CloseSnapShot : MonoBehaviour {
 	[SerializeField]
 	GameObject rootSnapShotUI;
 
-	void OnKeyPress(bool pressed){
-		if(!pressed){
-			snap.HidePicture();
-		}
+	public void CloseUI(){
+		snap.HidePicture();
 	}
 }
