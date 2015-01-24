@@ -22,7 +22,7 @@ public class MysterySpawn : MonoBehaviour {
 	}
 
 	public virtual void TriggerMysteryResolved(){
-		photonView.RPC("ListenMysteryResolved", PhotonTargets.All);
+		photonView.RPC("ListenMysteryResolved", PhotonTargets.Others);
 		AlertMysteryManager ();
 	}
 

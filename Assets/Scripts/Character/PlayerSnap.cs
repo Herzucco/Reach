@@ -5,21 +5,24 @@ public class PlayerSnap : MonoBehaviour {
 
 	[SerializeField]
 	MovePlayer movePlayer;
-	[SerializeField]
-	Texture2D player1;
-	[SerializeField]
-	Texture2D player1Pending;
-	[SerializeField]
-	Texture2D player2;
-	[SerializeField]
-	Texture2D player2Pending;
+	[HideInInspector]
+	public Texture2D textureReceived;
+
 	private Texture2D textureToSend;
 	public Texture2D TextureToSend{
-		get{ return textureToSend;}
+		get{
+			return textureToSend;
+		}
 	}
+
+	[SerializeField]
 	Renderer targetRenderer;
+	[SerializeField]
+	GameObject closePictureUI;
 	float lastSnapInput;
 	float snapInput;
+	float lastShowPicInput;
+	float showPicInput;
 	Player currentPlayer;
 
 	void OnEnable(){
@@ -42,7 +45,11 @@ public class PlayerSnap : MonoBehaviour {
 	void Update () {
 		lastSnapInput = snapInput;
 		snapInput = Input.GetAxis ("Snap");
-
+		lastShowPicInput = showPicInput;
+		showPicInput = Input.GetAxis ("Show Picture");
+		if(showPicInput == 1 && lastShowPicInput == 0 && textureReceived != null){
+			ShowPicture();
+		}
 	}
 
 	void OnPostRender(){
@@ -55,23 +62,22 @@ public class PlayerSnap : MonoBehaviour {
 		Texture2D texture = new Texture2D ((int)Camera.main.pixelWidth, (int)Camera.main.pixelHeight, TextureFormat.RGB24, true);
 		texture.ReadPixels(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), 0, 0);
 		texture.Apply ();
-		if(currentPlayer == Player.ONE){
-			player1Pending = texture;
-		}else{
-			player2Pending = texture;
-		}
+
 		textureToSend = texture;
 	}
 
-	/*public void ShowPicture(){
+	public void ShowPicture(){
 		movePlayer.moving = false;
-		Texture texture = currentPlayer == Player.ONE ? player1.material.mainTexture : player2.material.mainTexture;
-		targetRenderer.material.mainTexture = texture;
 		targetRenderer.gameObject.SetActive (true);
-	}*/
+	}
 
 	public void HidePicture(){
 		movePlayer.moving = true;
 		targetRenderer.gameObject.SetActive (false);
+	}
+
+	public void SetTexture(Texture2D texture){
+		textureReceived = texture;
+		targetRenderer.material.mainTexture = textureReceived;
 	}
 }

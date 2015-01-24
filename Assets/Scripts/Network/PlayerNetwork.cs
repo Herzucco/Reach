@@ -4,6 +4,8 @@ using System.Collections;
 public class PlayerNetwork : MonoBehaviour {
 	public MonoBehaviour[] componentsToDisable;
 	public Camera cameraToDisable;
+	public UIRoot uiToDisable;
+	public GameObject snapshots;
 
 	public void Awake(){
 		PhotonView phView = GetComponent<PhotonView> ();
@@ -14,6 +16,7 @@ public class PlayerNetwork : MonoBehaviour {
 			}
 
 			cameraToDisable.gameObject.SetActive (false);
+			uiToDisable.gameObject.SetActive(false);
 		}
 
 	}
