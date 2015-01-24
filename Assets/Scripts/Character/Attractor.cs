@@ -24,11 +24,16 @@ public class Attractor : MonoBehaviour {
 
 	void Update(){
 		for(int i = 0; i < bodies.Count; i++){
-			Vector3 gravityUp = (bodies[i].GetTransform.position - mTransform.position).normalized;
-			Vector3 bodyUp = bodies[i].GetTransform.up;
-			bodies[i].GetRigidBody.AddForce(gravityUp * gravity);
-			Quaternion targetRotation = Quaternion.FromToRotation(bodyUp, gravityUp) * bodies[i].GetTransform.rotation;
-			bodies[i].GetTransform.rotation = Quaternion.Slerp(bodies[i].GetTransform.rotation, targetRotation, rotationRate * Time.deltaTime);
+			if(bodies[i] != null){
+				Vector3 gravityUp = (bodies[i].GetTransform.position - mTransform.position).normalized;
+				Vector3 bodyUp = bodies[i].GetTransform.up;
+				bodies[i].GetRigidBody.AddForce(gravityUp * gravity);
+				Quaternion targetRotation = Quaternion.FromToRotation(bodyUp, gravityUp) * bodies[i].GetTransform.rotation;
+				bodies[i].GetTransform.rotation = Quaternion.Slerp(bodies[i].GetTransform.rotation, targetRotation, rotationRate * Time.deltaTime);
+			}else{
+				break;
+			}
+
 		}
 	}
 }
