@@ -6,8 +6,20 @@ public enum Player{
 	TWO
 }
 public class GameManager : BaseManager {
-	public static Player player;
-	
+	private static Player _player;
+	public static Player player{
+		get{
+			return _player;
+		}
+		set{
+			_player = value;
+			OnPlayerSet();
+		}
+	}
+
+	public delegate void PlayerSet();
+	public static event PlayerSet OnPlayerSet;
+
 	public static void Initialize(){
 
 	}
