@@ -20,6 +20,13 @@ public class MovePlayer : MonoBehaviour {
 	private	float rotationSpeedX;
 	[SerializeField]
 	private float smoothingForce;
+	[SerializeField]
+	ContextActionPanel actionPanel;
+
+	ContextAction.ActionDelegate currentAction;
+	public ContextAction.ActionDelegate CurrentAction{
+		get{ return currentAction;}
+	}
 
 	Rigidbody mRigidbody;
 	Transform mTransform;
@@ -30,9 +37,13 @@ public class MovePlayer : MonoBehaviour {
 	bool jumping;
 	bool grounded;
 	float _jumpedTime;
+	float oldActionInput;
+	float currentActionInput;
 
 	void Awake(){
 		Screen.showCursor = false;
+		oldActionInput = 0;
+		currentActionInput = 0;
 		_jumpedTime = jumpDuration;
 		grounded = false;
 		jumping = false;
@@ -45,6 +56,11 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void Update(){
+		oldActionInput = currentActionInput;
+		currentActionInput = Input.GetAxis ("Action");
+		if(currentActionInput == 1 && oldActionInput == 0 && currentAction != null){
+			currentAction();
+		}
 		grounded = IsGrounded ();
 		moveVec.z = Input.GetAxis ("Vertical");
 		moveVec.x = Input.GetAxis ("Horizontal");
@@ -86,6 +102,16 @@ public class MovePlayer : MonoBehaviour {
 			}
 		}else{
 			moveVec.y = Mathf.Lerp(moveVec.y, 0, smoothingForce);
+		}
+	}
+
+	public void ActionChanged(ContextAction.ActionDelegate action, string name, bool activation){
+		if(activation){
+			currentAction = action;
+			actionPanel.Launch(name);
+		}else if(currentAction == action){
+			currentAction = null;
+			actionPanel.Close();
 		}
 	}
 }
