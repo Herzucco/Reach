@@ -22,8 +22,6 @@ public class MovePlayer : MonoBehaviour {
 	[SerializeField]
 	private	float rotationSpeedY;
 	[SerializeField]
-	private	float rotationSpeedX;
-	[SerializeField]
 	private float smoothingForce;
 	[SerializeField]
 	ContextActionPanel actionPanel;
@@ -37,7 +35,6 @@ public class MovePlayer : MonoBehaviour {
 	Rigidbody mRigidbody;
 	Transform mTransform;
 	Vector3 moveVec;
-	float rotX;
 	float rotY;
 	Transform cam;
 	bool jumping;
@@ -55,7 +52,6 @@ public class MovePlayer : MonoBehaviour {
 		_jumpedTime = jumpDuration;
 		grounded = false;
 		jumping = false;
-		rotX = 0;
 		rotY = 0;
 		mRigidbody = rigidbody;
 		mTransform = transform;
@@ -80,14 +76,7 @@ public class MovePlayer : MonoBehaviour {
 		}
 		grounded = IsGrounded ();
 		moveVec.z = Input.GetAxis ("Vertical");
-		moveVec.x = Input.GetAxis ("Horizontal");
-		rotX = cam.localRotation.eulerAngles.x - Input.GetAxis ("Mouse Y") * rotationSpeedX;
-		if(rotX >80 && rotX < 100){
-			rotX = 80;
-		}else if(rotX < 280 && rotX > 200){
-			rotX = 280;
-		}
-		rotY = Input.GetAxis ("Mouse X") * rotationSpeedY;
+		rotY = Input.GetAxis ("Horizontal") * rotationSpeedY;
 		if(jumping || grounded){
 			jumping = Input.GetAxis ("Jump") > 0;
 			if(jumping)
@@ -103,9 +92,6 @@ public class MovePlayer : MonoBehaviour {
 		mTransform.Rotate (Vector3.up, rotY);
 	}
 
-	void LateUpdate(){
-		cam.localRotation = Quaternion.Euler (rotX, 0, 0);
-	}
 
 	bool IsGrounded(){
 		return Physics.Raycast(mTransform.position, -mTransform.up, 2);
