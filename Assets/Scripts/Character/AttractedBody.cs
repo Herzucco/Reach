@@ -15,7 +15,7 @@ public class AttractedBody : MonoBehaviour {
 		GetRigidBody.useGravity = false;
 	}
 
-	void Start(){
+	public void Attract(){
 		Attractor[] a = GameObject.FindObjectsOfType<Attractor> ();
 
 		for (int i = 0; i < a.Length; i++) {

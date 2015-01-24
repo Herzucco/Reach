@@ -12,5 +12,10 @@ public class NetworkAttractor : MonoBehaviour {
 		if (GameManager.player != playerToAttract) {
 			GetComponent<Attractor>().enabled = false;
 		}
+
+		AttractedBody[] bodies = FindObjectsOfType<AttractedBody> ();
+		for(int i = 0; i < bodies.Length; i++){
+			bodies[i].Attract();
+		}
 	}
 }
