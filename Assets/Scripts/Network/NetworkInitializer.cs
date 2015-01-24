@@ -8,7 +8,8 @@ using System.Collections;
 /// </summary>
 public class NetworkInitializer : Photon.MonoBehaviour
 {
-	
+	public GameObject UIRoot;
+	public GameObject Scene;
 	public byte Version = 1;
 	
 	private int playerCount = 0;
@@ -32,6 +33,9 @@ public class NetworkInitializer : Photon.MonoBehaviour
 			
 			if(newCount < playerCount){
 				Application.LoadLevel("Deco");
+			}else if(newCount > playerCount){
+				UIRoot.SetActive(false);
+				Scene.SetActive(true);
 			}
 			
 			playerCount = newCount;
@@ -50,7 +54,7 @@ public class NetworkInitializer : Photon.MonoBehaviour
 	public virtual void OnPhotonRandomJoinFailed()
 	{
 		Debug.Log("OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one. Calling: PhotonNetwork.CreateRoom(null, new RoomOptions() {maxPlayers = 4}, null);");
-		PhotonNetwork.CreateRoom(null, new RoomOptions() { maxPlayers = 2 }, null);
+		PhotonNetwork.CreateRoom(null, new RoomOptions() { maxPlayers = 15 }, null);
 	}
 	
 	// the following methods are implemented to give you some context. re-implement them as needed.
@@ -65,6 +69,8 @@ public class NetworkInitializer : Photon.MonoBehaviour
 		Debug.Log (PhotonNetwork.playerList.Length);
 		if (PhotonNetwork.playerList.Length == 1) {
 			GameManager.player = Player.ONE;
+			UIRoot.SetActive(true);
+			Scene.SetActive(false);
 		} else {
 			GameManager.player = Player.TWO;
 		}
