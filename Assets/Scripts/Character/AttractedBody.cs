@@ -16,8 +16,11 @@ public class AttractedBody : MonoBehaviour {
 	}
 
 	void Start(){
-		Attractor a = GameObject.FindObjectOfType<Attractor> ();
-		a.AddBody ((this));
+		Attractor[] a = GameObject.FindObjectsOfType<Attractor> ();
+
+		for (int i = 0; i < a.Length; i++) {
+			a[i].AddBody ((this));
+		}
 	}
 
 }
