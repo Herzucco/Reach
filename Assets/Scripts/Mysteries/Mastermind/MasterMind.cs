@@ -41,12 +41,12 @@ public class MasterMind : Mystery {
         {
             if (_masterMindChangeColor[i].colorEnum == _enumColor[i])
             {
-                _masterMindControlColor[i].renderer.material.color = Color.red;
+                _masterMindControlColor[i].renderer.material.color = Color.green;
                 colorToReach++;
             }
             else
             {
-                _masterMindControlColor[i].renderer.material.color = Color.white;
+                _masterMindControlColor[i].renderer.material.color = Color.red;
             }
         }
 

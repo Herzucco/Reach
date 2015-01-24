@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SlabsPattern : Mystery {
 
-    [Range(1, 8)]
+    [Range(1, 20)]
     [Header("The number of mandatory slades for the pattern to validate")]
     public int slabNumber;
 
