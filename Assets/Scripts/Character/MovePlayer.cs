@@ -4,6 +4,9 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class MovePlayer : MonoBehaviour {
 
+	[HideInInspector]
+	public bool moving = true;
+
 	[SerializeField]
 	float jumpDuration;
 	[SerializeField]
@@ -56,6 +59,8 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void Update(){
+		if(!moving)
+			return;
 		oldActionInput = currentActionInput;
 		currentActionInput = Input.GetAxis ("Action");
 		if(currentActionInput == 1 && oldActionInput == 0 && currentAction != null){
@@ -79,6 +84,8 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
+		if(!moving)
+			return;
 		Jump ();
 		mRigidbody.MovePosition (mTransform.position + mTransform.TransformDirection (moveVec * speed));
 		mTransform.Rotate (Vector3.up, rotY);
