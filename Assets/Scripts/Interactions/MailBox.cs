@@ -12,15 +12,16 @@ public class MailBox : ContextAction {
 	private PhotonView photonView;
 	private PlayerSnap snap;
 	public Texture2D receivedTexture = null;
+
+	public AudioClip inboxSound;
+	public AudioClip outboxSound;
+	protected AudioSource soundSource;
+
 	protected virtual void Start(){
 		photonView = GetComponent<PhotonView> ();
 		GameManager.OnPlayerSet += OnGameReady;
 		soundSource = GetComponent<AudioSource>();
 	}
-
-	public AudioClip inboxSound;
-	public AudioClip outboxSound;
-	protected AudioSource soundSource;
 
 	public override void Action ()
 	{
