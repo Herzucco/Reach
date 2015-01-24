@@ -51,7 +51,7 @@ public class JumpAndRunMovement : MonoBehaviour
 
     void UpdateJumping()
     {
-        if( Input.GetKey( KeyCode.Space ) == true && m_IsGrounded == true )
+        if( Input.GetKey( KeyCode.Space ) == true)
         {
             m_Animator.SetTrigger( "IsJumping" );
             m_Body.AddForce( Vector2.up * JumpForce );
