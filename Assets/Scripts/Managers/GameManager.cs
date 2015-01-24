@@ -14,6 +14,7 @@ public class GameManager : BaseManager {
 		set{
 			_player = value;
 			OnPlayerSet();
+			MysteryManager.Initialize();
 		}
 	}
 

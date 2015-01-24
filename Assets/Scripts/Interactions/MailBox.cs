@@ -20,15 +20,22 @@ public class MailBox : ContextAction {
 	public override void Action ()
 	{
 		if (isFull) {
-			ActionName = "Read";
 			isFull = false;
 			snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
 			snap.SetTexture(receivedTexture);
+			ActionName = "Send";
 		} else {
 			snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
-			ActionName = "Send";
 
 			TriggerMailBox ();
+		}
+	}
+
+	protected override void PlayerEnter(){
+		if (isFull) {
+			ActionName = "Read";
+		} else {
+			ActionName = "Send";
 		}
 	}
 
@@ -39,6 +46,7 @@ public class MailBox : ContextAction {
 		receivedTexture = new Texture2D(1, 1);
 		receivedTexture.LoadImage(receivedByte);
 		isFull = true;
+		ActionName = "Read";
 	}
 	
 	public virtual void TriggerMailBox(){
