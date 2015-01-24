@@ -2,25 +2,17 @@
 using System.Collections;
 
 public class Mystery : MonoBehaviour {
-	public Mysteries id;
-
-	private PhotonView photonView;
-
-	protected virtual void Start(){
-		photonView = gameObject.AddComponent<PhotonView> ();
+	private MysterySpawn spawn;
+    private bool isResolved = false;
+	protected virtual void Awake(){
+		spawn = transform.parent.gameObject.GetComponent<MysterySpawn>();
 	}
 
-	[RPC]
-	protected virtual void ListenMysteryResolved(){
-		AlertMysteryManager ();
-	}
-
-	protected virtual void TriggerMysteryResolved(){
-		photonView.RPC("ListenMysteryResolved", PhotonTargets.All);
-		AlertMysteryManager ();
-	}
-
-	private void AlertMysteryManager(){
-		MysteryManager.MysteryResolved (id);
+	protected virtual void Resolve(){
+        if (!isResolved)
+        {
+            isResolved = true;
+            spawn.TriggerMysteryResolved();
+        }
 	}
 }

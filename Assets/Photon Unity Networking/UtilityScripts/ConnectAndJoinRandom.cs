@@ -13,6 +13,7 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
 
     public byte Version = 1;
 
+	private int playerCount = 0;
     /// <summary>if we don't want to connect in Start(), we have to "remember" if we called ConnectUsingSettings()</summary>
     private bool ConnectInUpdate = true;
 
@@ -29,7 +30,15 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
 
             ConnectInUpdate = false;
             PhotonNetwork.ConnectUsingSettings(Version + "."+Application.loadedLevel);
-        }
+		}else if(PhotonNetwork.connected){
+			int newCount = PhotonNetwork.playerList.Length;
+
+			if(newCount < playerCount){
+				Application.Quit();
+			}
+
+			playerCount = newCount;
+		}
     }
 
     // to react to events "connected" and (expected) error "failed to join random room", we implement some methods. PhotonNetworkingMessage lists all available methods!
@@ -39,6 +48,7 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
         if (PhotonNetwork.networkingPeer.AvailableRegions != null) Debug.LogWarning("List of available regions counts " + PhotonNetwork.networkingPeer.AvailableRegions.Count + ". First: " + PhotonNetwork.networkingPeer.AvailableRegions[0] + " \t Current Region: " + PhotonNetwork.networkingPeer.CloudRegion);
         Debug.Log("OnConnectedToMaster() was called by PUN. Now this client is connected and could join a room. Calling: PhotonNetwork.JoinRandomRoom();");
         PhotonNetwork.JoinRandomRoom();
+
     }
 
     public virtual void OnPhotonRandomJoinFailed()
@@ -56,6 +66,7 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
 
     public void OnJoinedRoom()
     {
+		Debug.Log (PhotonNetwork.playerList.Length);
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room. From here on, your game would be running. For reference, all callbacks are listed in enum: PhotonNetworkingMessage");
     }
 
