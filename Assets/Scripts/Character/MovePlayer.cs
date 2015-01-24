@@ -8,6 +8,8 @@ public class MovePlayer : MonoBehaviour {
 	public bool moving = true;
 
 	[SerializeField]
+	Animator anim;
+	[SerializeField]
 	float jumpDuration;
 	[SerializeField]
 	float minJumpDuration;
@@ -42,8 +44,10 @@ public class MovePlayer : MonoBehaviour {
 	float _jumpedTime;
 	float oldActionInput;
 	float currentActionInput;
+	bool helloing;
 
 	void Awake(){
+		helloing = false;
 		Screen.showCursor = false;
 		oldActionInput = 0;
 		currentActionInput = 0;
@@ -59,6 +63,13 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void Update(){
+		if(Input.GetAxis("Hello") > 0){
+			moving = false;
+			StartCoroutine(Hello());
+		}
+		anim.SetFloat ("speed", Mathf.Abs (moveVec.x) + Mathf.Abs (moveVec.z));
+		anim.SetBool ("jumping", !grounded);
+		anim.SetBool ("hello", helloing);
 		if(!moving)
 			return;
 		oldActionInput = currentActionInput;
@@ -67,25 +78,15 @@ public class MovePlayer : MonoBehaviour {
 			currentAction();
 		}
 		grounded = IsGrounded ();
-		moveVec.z = Input.GetAxis ("VerticalPad");
-		moveVec.x = Input.GetAxis ("HorizontalPad");
-		if(moveVec.z != 0 || moveVec.x != 0){
-			moveVec.z = Input.GetAxis ("Vertical");
-			moveVec.x = Input.GetAxis ("Horizontal");
-		}
-		float goodAxis = Input.GetAxis ("Mouse YPad") != 0 ? Input.GetAxis ("Mouse YPad") : Input.GetAxis ("Mouse Y");
-		rotX = cam.localRotation.eulerAngles.x - goodAxis * rotationSpeedX;
+		moveVec.z = Input.GetAxis ("Vertical");
+		moveVec.x = Input.GetAxis ("Horizontal");
+		rotX = cam.localRotation.eulerAngles.x - Input.GetAxis ("Mouse Y") * rotationSpeedX;
 		if(rotX >80 && rotX < 100){
 			rotX = 80;
 		}else if(rotX < 280 && rotX > 200){
 			rotX = 280;
 		}
-		if(Mathf.Abs(rotX) < 0.2)
-			rotX = 0;
-		goodAxis = Input.GetAxis ("Mouse XPad") != 0 ? Input.GetAxis ("Mouse XPad") : Input.GetAxis ("Mouse X");
-		rotY = goodAxis * rotationSpeedY;
-		if(Mathf.Abs(rotY) < 0.2)
-			rotY = 0;
+		rotY = Input.GetAxis ("Mouse X") * rotationSpeedY;
 		if(jumping || grounded){
 			jumping = Input.GetAxis ("Jump") > 0;
 			if(jumping)
@@ -130,5 +131,12 @@ public class MovePlayer : MonoBehaviour {
 			currentAction = null;
 			actionPanel.Close();
 		}
+	}
+
+	IEnumerator Hello(){
+		helloing = true;
+		yield return new WaitForSeconds (2);
+		moving = true;
+		helloing = false;
 	}
 }
