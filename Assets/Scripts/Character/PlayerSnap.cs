@@ -6,13 +6,17 @@ public class PlayerSnap : MonoBehaviour {
 	[SerializeField]
 	MovePlayer movePlayer;
 	[SerializeField]
-	Renderer player1;
+	Texture2D player1;
 	[SerializeField]
-	Renderer player1Pending;
+	Texture2D player1Pending;
 	[SerializeField]
-	Renderer player2;
+	Texture2D player2;
 	[SerializeField]
-	Renderer player2Pending;
+	Texture2D player2Pending;
+	private Texture2D textureToSend;
+	public Texture2D TextureToSend{
+		get{ return textureToSend;}
+	}
 	Renderer targetRenderer;
 	float lastSnapInput;
 	float snapInput;
@@ -52,18 +56,19 @@ public class PlayerSnap : MonoBehaviour {
 		texture.ReadPixels(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), 0, 0);
 		texture.Apply ();
 		if(currentPlayer == Player.ONE){
-			player1Pending.material.mainTexture = texture;
+			player1Pending = texture;
 		}else{
-			player2Pending.material.mainTexture = texture;
+			player2Pending = texture;
 		}
+		textureToSend = texture;
 	}
 
-	public void ShowPicture(){
+	/*public void ShowPicture(){
 		movePlayer.moving = false;
 		Texture texture = currentPlayer == Player.ONE ? player1.material.mainTexture : player2.material.mainTexture;
 		targetRenderer.material.mainTexture = texture;
 		targetRenderer.gameObject.SetActive (true);
-	}
+	}*/
 
 	public void HidePicture(){
 		movePlayer.moving = true;
