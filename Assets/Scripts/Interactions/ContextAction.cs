@@ -18,6 +18,7 @@ public abstract class ContextAction : MonoBehaviour {
 	protected void OnTriggerEnter(Collider other){
 		if(other.tag == "Player"){
 			MovePlayer mp = other.GetComponent<MovePlayer>();
+			PlayerEnter();
 			mp.ActionChanged(Action, ActionName, true);
 		}
 	}
@@ -32,4 +33,8 @@ public abstract class ContextAction : MonoBehaviour {
 	}
 
 	public abstract void Action();
+
+	protected virtual void PlayerEnter(){
+
+	}
 }

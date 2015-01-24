@@ -3,13 +3,12 @@ using System.Collections;
 
 public class CloseSnapShot : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	[SerializeField]
+	private PlayerSnap snap;
+	[SerializeField]
+	GameObject rootSnapShotUI;
+
+	public void CloseUI(){
+		snap.HidePicture();
 	}
 }

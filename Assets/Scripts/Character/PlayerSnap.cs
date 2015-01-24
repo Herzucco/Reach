@@ -5,7 +5,7 @@ public class PlayerSnap : MonoBehaviour {
 
 	[SerializeField]
 	MovePlayer movePlayer;
-	[SerializeField]
+	[HideInInspector]
 	public Texture2D textureReceived;
 
 	private Texture2D textureToSend;
@@ -17,8 +17,12 @@ public class PlayerSnap : MonoBehaviour {
 
 	[SerializeField]
 	Renderer targetRenderer;
+	[SerializeField]
+	GameObject closePictureUI;
 	float lastSnapInput;
 	float snapInput;
+	float lastShowPicInput;
+	float showPicInput;
 	Player currentPlayer;
 
 	void OnEnable(){
@@ -41,7 +45,11 @@ public class PlayerSnap : MonoBehaviour {
 	void Update () {
 		lastSnapInput = snapInput;
 		snapInput = Input.GetAxis ("Snap");
-
+		lastShowPicInput = showPicInput;
+		showPicInput = Input.GetAxis ("Show Picture");
+		if(showPicInput == 1 && lastShowPicInput == 0 && textureReceived != null){
+			ShowPicture();
+		}
 	}
 
 	void OnPostRender(){
@@ -59,15 +67,15 @@ public class PlayerSnap : MonoBehaviour {
 	}
 
 	public void ShowPicture(){
-		/*movePlayer.moving = false;
-		Texture texture = currentPlayer == Player.ONE ? player1.material.mainTexture : player2.material.mainTexture;
-		targetRenderer.material.mainTexture = texture;
-		targetRenderer.gameObject.SetActive (true);*/
+		movePlayer.moving = false;
+		targetRenderer.gameObject.SetActive (true);
+		closePictureUI.SetActive (true);
 	}
 
 	public void HidePicture(){
 		movePlayer.moving = true;
 		targetRenderer.gameObject.SetActive (false);
+		closePictureUI.SetActive (false);
 	}
 
 	public void SetTexture(Texture2D texture){

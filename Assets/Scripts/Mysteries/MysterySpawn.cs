@@ -31,7 +31,6 @@ public class MysterySpawn : MonoBehaviour {
 	}
 
 	private void SpawnPrefab(){
-		Debug.Log (GameManager.player);
 		if (GameManager.player == Player.ONE) {
 			OnePrefab.SetActive(true);
 		} else {
