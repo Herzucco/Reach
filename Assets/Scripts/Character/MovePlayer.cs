@@ -67,17 +67,23 @@ public class MovePlayer : MonoBehaviour {
 			currentAction();
 		}
 		grounded = IsGrounded ();
-		moveVec.z = Input.GetAxis ("Vertical");
-		moveVec.x = Input.GetAxis ("Horizontal");
-		rotX = cam.localRotation.eulerAngles.x - Input.GetAxis ("Mouse Y") * rotationSpeedX;
-		if(Mathf.Abs(rotX) < 0.2)
-			rotX = 0;
+		moveVec.z = Input.GetAxis ("VerticalPad");
+		moveVec.x = Input.GetAxis ("HorizontalPad");
+		if(moveVec.z != 0 || moveVec.x != 0){
+			moveVec.z = Input.GetAxis ("Vertical");
+			moveVec.x = Input.GetAxis ("Horizontal");
+		}
+		float goodAxis = Input.GetAxis ("Mouse YPad") != 0 ? Input.GetAxis ("Mouse YPad") : Input.GetAxis ("Mouse Y");
+		rotX = cam.localRotation.eulerAngles.x - goodAxis * rotationSpeedX;
 		if(rotX >80 && rotX < 100){
 			rotX = 80;
 		}else if(rotX < 280 && rotX > 200){
 			rotX = 280;
 		}
-		rotY = Input.GetAxis ("Mouse X") * rotationSpeedY;
+		if(Mathf.Abs(rotX) < 0.2)
+			rotX = 0;
+		goodAxis = Input.GetAxis ("Mouse XPad") != 0 ? Input.GetAxis ("Mouse XPad") : Input.GetAxis ("Mouse X");
+		rotY = goodAxis * rotationSpeedY;
 		if(Mathf.Abs(rotY) < 0.2)
 			rotY = 0;
 		if(jumping || grounded){
