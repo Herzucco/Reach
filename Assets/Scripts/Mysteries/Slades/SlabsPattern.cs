@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SlabsPattern : MonoBehaviour {
+public class SlabsPattern : Mystery {
 
     [Range(1, 8)]
     [Header("The number of mandatory slades for the pattern to validate")]
@@ -37,7 +37,10 @@ public class SlabsPattern : MonoBehaviour {
         }
 
         if (_slabNumber == slabNumber)
-            Debug.Log("PATTERN FINISHED");
+        {
+            Debug.Log("toto");
+            Resolve();
+        }
 
         _slabNumber = 0;
     }
