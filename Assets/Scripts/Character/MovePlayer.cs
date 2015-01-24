@@ -26,6 +26,7 @@ public class MovePlayer : MonoBehaviour {
 	[SerializeField]
 	ContextActionPanel actionPanel;
 
+	public AudioSource helloSound;
 	ContextAction.ActionDelegate currentAction;
 	public ContextAction.ActionDelegate CurrentAction{
 		get{ return currentAction;}
@@ -59,6 +60,8 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void Update(){
+		grounded = IsGrounded ();
+
 		if(Input.GetAxis("Hello") > 0){
 			moving = false;
 			StartCoroutine(Hello());
@@ -73,7 +76,6 @@ public class MovePlayer : MonoBehaviour {
 		if(currentActionInput == 1 && oldActionInput == 0 && currentAction != null){
 			currentAction();
 		}
-		grounded = IsGrounded ();
 		moveVec.z = Input.GetAxis ("Vertical");
 		rotY = Input.GetAxis ("Horizontal") * rotationSpeedY;
 		if(jumping || grounded){
@@ -120,9 +122,12 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	IEnumerator Hello(){
-		helloing = true;
-		yield return new WaitForSeconds (2);
-		moving = true;
-		helloing = false;
+		if (helloing != true) {
+			helloing = true;
+			helloSound.Play ();
+			yield return new WaitForSeconds (2);
+			moving = true;
+			helloing = false;
+		}
 	}
 }
