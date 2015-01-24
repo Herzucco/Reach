@@ -33,6 +33,7 @@ public class NetworkInitializer : Photon.MonoBehaviour
 			
 			if(newCount < playerCount){
 				Application.LoadLevel("Deco");
+				Screen.showCursor = true;
 			}else if(newCount > playerCount){
 				UIRoot.SetActive(false);
 				Scene.SetActive(true);
