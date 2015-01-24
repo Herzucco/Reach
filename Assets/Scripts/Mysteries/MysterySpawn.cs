@@ -22,6 +22,7 @@ public class MysterySpawn : MonoBehaviour {
 	}
 
 	public virtual void TriggerMysteryResolved(){
+		Debug.Log ("OLO");
 		photonView.RPC("ListenMysteryResolved", PhotonTargets.Others);
 		AlertMysteryManager ();
 	}

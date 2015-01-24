@@ -70,8 +70,8 @@ public class NetworkInitializer : Photon.MonoBehaviour
 		Debug.Log (PhotonNetwork.playerList.Length);
 		if (PhotonNetwork.playerList.Length == 1) {
 			GameManager.player = Player.ONE;
-			UIRoot.SetActive(true);
-			Scene.SetActive(false);
+			//UIRoot.SetActive(true);
+			//Scene.SetActive(false);
 		} else {
 			GameManager.player = Player.TWO;
 		}
