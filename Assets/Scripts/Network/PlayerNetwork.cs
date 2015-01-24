@@ -14,7 +14,6 @@ public class PlayerNetwork : MonoBehaviour {
 			}
 
 			cameraToDisable.gameObject.SetActive (false);
-			GetComponent<CharacterController>().enabled = false;
 		}
 
 	}
