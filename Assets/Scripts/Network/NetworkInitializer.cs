@@ -31,7 +31,7 @@ public class NetworkInitializer : Photon.MonoBehaviour
 			int newCount = PhotonNetwork.playerList.Length;
 			
 			if(newCount < playerCount){
-				Application.Quit();
+				Application.LoadLevel("Deco");
 			}
 			
 			playerCount = newCount;
