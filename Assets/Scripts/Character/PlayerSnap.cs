@@ -25,6 +25,8 @@ public class PlayerSnap : MonoBehaviour {
 	float showPicInput;
 	Player currentPlayer;
 
+	protected AudioSource soundSource;
+
 	void OnEnable(){
 		GameManager.OnPlayerSet += Set;
 	}
@@ -35,6 +37,7 @@ public class PlayerSnap : MonoBehaviour {
 	void Awake(){
 		lastSnapInput = 0;
 		snapInput = 0;
+		soundSource = GetComponent<AudioSource>();
 	}
 
 	void Set(){
@@ -64,6 +67,7 @@ public class PlayerSnap : MonoBehaviour {
 		texture.Apply ();
 
 		textureToSend = texture;
+		soundSource.Play();
 	}
 
 	public void ShowPicture(){
