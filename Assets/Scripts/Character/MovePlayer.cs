@@ -60,6 +60,8 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void Update(){
+		grounded = IsGrounded ();
+
 		if(Input.GetAxis("Hello") > 0){
 			moving = false;
 			StartCoroutine(Hello());
@@ -74,7 +76,6 @@ public class MovePlayer : MonoBehaviour {
 		if(currentActionInput == 1 && oldActionInput == 0 && currentAction != null){
 			currentAction();
 		}
-		grounded = IsGrounded ();
 		moveVec.z = Input.GetAxis ("Vertical");
 		rotY = Input.GetAxis ("Horizontal") * rotationSpeedY;
 		if(jumping || grounded){
