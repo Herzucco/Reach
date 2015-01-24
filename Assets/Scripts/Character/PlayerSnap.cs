@@ -69,11 +69,13 @@ public class PlayerSnap : MonoBehaviour {
 	public void ShowPicture(){
 		movePlayer.moving = false;
 		targetRenderer.gameObject.SetActive (true);
+		closePictureUI.SetActive (true);
 	}
 
 	public void HidePicture(){
 		movePlayer.moving = true;
 		targetRenderer.gameObject.SetActive (false);
+		closePictureUI.SetActive (false);
 	}
 
 	public void SetTexture(Texture2D texture){
