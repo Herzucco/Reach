@@ -29,8 +29,8 @@ public class PlanetsMixer : MonoBehaviour {
 	}
 
 	void SetPlanetes(){
-		//planetes [0].position = new Vector3 (0, distanceByStep / 2 * totalSteps,0);
-		//planetes [1].position = new Vector3 (0, -distanceByStep / 2 * totalSteps,0);
+		planetes [0].position = new Vector3 (0, distanceByStep / 2 * totalSteps,0);
+		planetes [1].position = new Vector3 (0, -distanceByStep / 2 * totalSteps,0);
 	}
 
 	void Update(){
@@ -48,6 +48,7 @@ public class PlanetsMixer : MonoBehaviour {
 		mp = GameObject.FindObjectsOfType<MovePlayer> ();
 		currentState = state;
 		StartCoroutine (NewState ());
+		//Debug.Log (state);
 	}
 	
 	IEnumerator NewState(){
@@ -74,9 +75,7 @@ public class PlanetsMixer : MonoBehaviour {
 		planetes [0].transform.localRotation = Quaternion.identity;
 		planetes [1].transform.localRotation = Quaternion.identity;
 		animation.Play ();
-		Debug.Log ("toto");
 		yield return new WaitForSeconds (mixClip.length);
-		Debug.Log ("titi");
 		FreePlayers ();
 		for(int i = 0; i< objectsToRemove.Length; i++){
 			objectsToRemove[i].SetActive(false);
