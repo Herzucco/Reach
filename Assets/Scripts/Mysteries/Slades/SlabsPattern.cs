@@ -18,7 +18,7 @@ public class SlabsPattern : Mystery {
 
     private void Update()
     {
-		if (_slabs.Length == 0) {
+		if (_slabs == null || _slabs.Length == 0) {
 			_slabs = GameObject.FindGameObjectsWithTag("Slabs");
 			_mysteriesSlab = new SlabCollision[_slabs.Length];
 			
