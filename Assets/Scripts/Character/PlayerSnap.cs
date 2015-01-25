@@ -15,8 +15,7 @@ public class PlayerSnap : MonoBehaviour {
 		}
 	}
 
-	[SerializeField]
-	Renderer targetRenderer;
+	public Renderer targetRenderer;
 	[SerializeField]
 	GameObject closePictureUI;
 	float lastSnapInput;
