@@ -14,7 +14,7 @@ public class NetworkInitializer : Photon.MonoBehaviour
 	
 	private int playerCount = 0;
 	private bool ConnectInUpdate = true;
-	
+	private bool endUpdate = false;
 	public virtual void Start()
 	{
 		PhotonNetwork.autoJoinLobby = false;    // we join randomly. always. no need to join a lobby to get the list of rooms.
@@ -22,13 +22,16 @@ public class NetworkInitializer : Photon.MonoBehaviour
 	
 	public virtual void Update()
 	{
-		if (ConnectInUpdate && !PhotonNetwork.connected)
-		{
-			Debug.Log("Update() was called by Unity. Scene is loaded. Let's connect to the Photon Master Server. Calling: PhotonNetwork.ConnectUsingSettings();");
-			
+		if (ConnectInUpdate && !PhotonNetwork.connected) {
+			Debug.Log ("Update() was called by Unity. Scene is loaded. Let's connect to the Photon Master Server. Calling: PhotonNetwork.ConnectUsingSettings();");
+
 			ConnectInUpdate = false;
-			PhotonNetwork.ConnectUsingSettings(Version + "."+Application.loadedLevel);
-		}else if(PhotonNetwork.connected){
+			PhotonNetwork.ConnectUsingSettings (Version + "." + Application.loadedLevel);
+			endUpdate = true;
+		}else if (PhotonNetwork.connected && !endUpdate) {
+			OnConnectedToMaster();
+			endUpdate = true;
+		}else if(endUpdate){
 			int newCount = PhotonNetwork.playerList.Length;
 			
 			if(newCount < playerCount){
