@@ -28,6 +28,7 @@ public class MysteryManager : MonoBehaviour {
 	public static void MysteryResolved(Mysteries id){
 		if (source != null) {
 			source.clip = instance.clip;
+			source.volume = 0.7f;
 			source.Play();
 		}
 		fsm.current.MysterySolved (Instance, fsm, id);
