@@ -27,13 +27,16 @@ public class SlabsPattern : Mystery {
     {
         for (int i = 0; i < _slabs.Length; i++)
         {
-            if (_mysteriesSlab[i].isActivated)
+            if (_mysteriesSlab[i] != null)
             {
-                if (_mysteriesSlab[i].isMandatory)
-                    _slabNumber++;
-                
-                else
-                    _slabNumber--;
+                if (_mysteriesSlab[i].isActivated)
+                {
+                    if (_mysteriesSlab[i].isMandatory)
+                        _slabNumber++;
+
+                    else
+                        _slabNumber--;
+                }
             }
         }
 

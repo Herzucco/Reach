@@ -6,7 +6,7 @@ public class Statue : Mystery {
 	public StatueArea area;
 	private GameObject player;
 	private GameObject other;
-	public GameObject infoLabel;
+	public string infoLabel;
 
 	void Update () {
 		if (area.hasPlayer) {
@@ -27,6 +27,6 @@ public class Statue : Mystery {
 
 		PlayerFreeze pf = player.AddComponent<PlayerFreeze>();
 		pf.statue = this;
-		infoLabel.animation.Play();
+		GameObject.FindGameObjectWithTag(infoLabel).animation.Play();
 	}
 }
