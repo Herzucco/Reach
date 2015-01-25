@@ -83,9 +83,9 @@ public class PlanetsMixer : MonoBehaviour {
 	}
 
 	void FixPlayers(){
-		Debug.Log (mp.Length);
 		for(int i= 0; i < mp.Length; i++){
 			mp[i].moving = false;
+			mp[i].rigidbody.Sleep();
 			Transform closestPlanete = Vector3.Distance (mp[i].transform.position, planetes [0].position) < Vector3.Distance (mp[i].transform.position, planetes [1].position) ? planetes [0] : planetes [1];
 			mp[i].transform.parent = closestPlanete;
 		}
@@ -95,6 +95,8 @@ public class PlanetsMixer : MonoBehaviour {
 		for(int i= 0; i < mp.Length; i++){
 			mp[i].moving = true;			
 			mp[i].transform.parent = null;
+			mp[i].rigidbody.WakeUp();
+            mp[i].rigidbody.velocity.Set(0, 0, 0);
 		}
 	}
 }
