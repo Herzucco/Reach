@@ -25,7 +25,7 @@ public class MailBox : MonoBehaviour {
 
 	[RPC]
 	protected virtual void ListenMailBox(byte[] receivedByte){
-		Debug.Log ("walala");
+		Debug.Log ("oker");
 		receivedTexture = new Texture2D(1, 1);
 		receivedTexture.LoadImage(receivedByte);
 		isFull = true;
