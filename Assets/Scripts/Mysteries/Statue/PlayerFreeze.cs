@@ -18,6 +18,7 @@ public class PlayerFreeze : MonoBehaviour {
 			}else if(hit.transform.gameObject.tag == "Two" && GameManager.player != Player.TWO){
 				CheckHello();
 			}
+			Debug.Log(hit.transform.name);
 		}
 	}
 

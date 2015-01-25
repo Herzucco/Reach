@@ -28,6 +28,8 @@ public class HelloState : FSMState<MysteryManager> {
 	}
 
 	public override void MysterySolved(MysteryManager o, FSM<MysteryManager> fsm, Mysteries id){
+		
+		Debug.Log("lol what");
 		if (id == Mysteries.Hello) {
 			Debug.Log("mystery Solved");
 			helloDone++;
