@@ -63,7 +63,7 @@ public class PlayerSnap : MonoBehaviour {
 	void Snap(){
 		Rect old = Camera.main.rect;
 
-		Camera.main.rect = new Rect (0.30f, 0.30f, 0.70f, 0.70f);
+		Camera.main.rect = new Rect (0.25f, 0.25f, 0.5f, 0.5f);
 		Texture2D texture = new Texture2D ((int)Camera.main.pixelWidth, (int)Camera.main.pixelHeight, TextureFormat.RGB24, true);
 		texture.ReadPixels(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), 0, 0);
 		texture.Apply ();
