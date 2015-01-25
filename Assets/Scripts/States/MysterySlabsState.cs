@@ -28,6 +28,7 @@ public class MysterySlabsState : FSMState<MysteryManager> {
 	}
 
 	public override void MysterySolved(MysteryManager o, FSM<MysteryManager> fsm, Mysteries id){
+		mixer = GameObject.FindObjectOfType<PlanetsMixer> ();
 		if (id == Mysteries.SlabSign) {
 			slabsDone++;
 			if(slabsDone >= 2){
