@@ -26,8 +26,6 @@ public class MailBox : ContextAction {
 	public override void Action ()
 	{
 		if (isFull) {
-			Debug.Log("Bouyou");
-
 			isFull = false;
 			snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
 			snap.SetTexture(receivedTexture);
@@ -35,9 +33,7 @@ public class MailBox : ContextAction {
 			soundSource.clip = inboxSound;
 			soundSource.Play();
 		} else {
-			Debug.Log("Incroyable");
 
-			snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
 
 			TriggerMailBox ();
 		}
@@ -56,15 +52,16 @@ public class MailBox : ContextAction {
 		receivedTexture = new Texture2D(1, 1);
 		receivedTexture.LoadImage(receivedByte);
 		isFull = true;
-		ActionName = "Read";
+		snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
+		snap.SetTexture(receivedTexture);
 
 		soundSource.clip = outboxSound;
 		soundSource.Play();
 	}
 	
 	public virtual void TriggerMailBox(){
+		snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
 		if (snap.TextureToSend != null) {
-			Debug.Log("olala");
 			photonView.RPC("ListenMailBox", PhotonTargets.Others, snap.TextureToSend.EncodeToPNG());
 		}
 	}

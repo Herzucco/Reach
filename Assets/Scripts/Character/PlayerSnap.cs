@@ -66,6 +66,7 @@ public class PlayerSnap : MonoBehaviour {
 		texture.Apply ();
 
 		textureToSend = texture;
+		FindObjectOfType<MailBox> ().TriggerMailBox();
 		soundSource.Play();
 	}
 
