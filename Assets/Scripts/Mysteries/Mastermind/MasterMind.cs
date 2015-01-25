@@ -44,13 +44,18 @@ public class MasterMind : Mystery {
 			if (_masterMindChangeColor[i].colorEnum == _enumColor[i])
             {
 
-                _masterMindControlColor[i].renderer.material.color = Color.green;
+				if(_masterMindControlColor[i].GetComponent<MasterAnswers>().rpced){
+					_masterMindControlColor[i].renderer.material.color = Color.green;
+				}
+
 				phView.RPC("AlertResolve", PhotonTargets.Others);
                 colorToReach++;
             }
             else
             {
-                _masterMindControlColor[i].renderer.material.color = Color.white;
+				if(_masterMindControlColor[i].GetComponent<MasterAnswers>().rpced){
+					_masterMindControlColor[i].renderer.material.color = Color.white;
+				}
 				phView.RPC("AlertBad", PhotonTargets.Others);
             }
         }
