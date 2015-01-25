@@ -31,7 +31,7 @@ public class MasterMindState : FSMState<MysteryManager> {
 		if (id == Mysteries.Hello) {
 			MasterMindDone++;
 			if(MasterMindDone >= 2){
-				fsm.ChangeState(new FinalState());
+				fsm.ChangeState(FinalState.Instance);
 			}
 		}
 	}

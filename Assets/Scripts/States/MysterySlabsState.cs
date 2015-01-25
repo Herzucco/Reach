@@ -32,7 +32,7 @@ public class MysterySlabsState : FSMState<MysteryManager> {
 			slabsDone++;
 			if(slabsDone >= 2){
 				mixer.NewState(1);
-				fsm.ChangeState(new MasterMindState());
+				fsm.ChangeState(MasterMindState.Instance);
 			}
 		}
 	}

@@ -22,7 +22,7 @@ public class MysteryManager : MonoBehaviour {
 
 	public static void Initialize(){
 		fsm = new FSM<MysteryManager>();
-		fsm.Configure(Instance, MysterySlabsState.Instance);
+		fsm.Configure(Instance, HelloState.Instance);
 	}	
 
 	public static void MysteryResolved(Mysteries id){

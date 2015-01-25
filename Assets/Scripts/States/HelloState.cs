@@ -29,10 +29,12 @@ public class HelloState : FSMState<MysteryManager> {
 
 	public override void MysterySolved(MysteryManager o, FSM<MysteryManager> fsm, Mysteries id){
 		if (id == Mysteries.Hello) {
+			Debug.Log("mystery Solved");
 			helloDone++;
 			if(helloDone >= 2){
+				Debug.Log("Lets go more");
 				mixer.NewState(1);
-				fsm.ChangeState(new MysterySlabsState());
+				fsm.ChangeState(MysterySlabsState.Instance);
 			}
 		}
 	}
