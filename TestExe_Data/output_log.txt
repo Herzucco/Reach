@@ -16,7 +16,7 @@ Platform assembly: C:\Users\user\Documents\Unity_projects\GGJ15\TestExe_Data\Man
 Loading C:\Users\user\Documents\Unity_projects\GGJ15\TestExe_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\user\Documents\Unity_projects\GGJ15\TestExe_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\user\Documents\Unity_projects\GGJ15\TestExe_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.063 seconds
+- Completed reload, in  0.067 seconds
 desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -30,11 +30,16 @@ The referenced script on this Behaviour is missing!
  
 (Filename:  Line: 1783)
 
-UnloadTime: 5.206032 ms
+UnloadTime: 3.596968 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 6635.
-Total: 2.096781 ms (FindLiveObjects: 0.391333 ms CreateObjectMapping: 0.077642 ms MarkObjects: 1.124470 ms  DeleteObjects: 0.127172 ms)
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 7857.
+Total: 1.982549 ms (FindLiveObjects: 0.267731 ms CreateObjectMapping: 0.071394 ms MarkObjects: 1.064231 ms  DeleteObjects: 0.160192 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MysterySpawn.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
 Update() was called by Unity. Scene is loaded. Let's connect to the Photon Master Server. Calling: PhotonNetwork.ConnectUsingSettings();
  
@@ -44,11 +49,7 @@ OnConnectedToMaster() was called by PUN. Now this client is connected and could 
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one. Calling: PhotonNetwork.CreateRoom(null, new RoomOptions() {maxPlayers = 4}, null);
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-1
+2
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
@@ -79,4 +80,10 @@ The referenced script on this Behaviour is missing!
 The referenced script on this Behaviour is missing!
  
 (Filename:  Line: 1783)
+
+UnloadTime: 7.607134 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 248 unused Assets to reduce memory usage. Loaded Objects now: 1248.
+Total: 2.417166 ms (FindLiveObjects: 0.036589 ms CreateObjectMapping: 0.047745 ms MarkObjects: 0.673790 ms  DeleteObjects: 1.281539 ms)
 
