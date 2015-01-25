@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof (PhotonView))]
-public class MailBox : ContextAction {
+public class MailBox : MonoBehaviour {
 	public Transform oneSpawn;
 	public Transform twoSpawn;
 
@@ -21,30 +21,6 @@ public class MailBox : ContextAction {
 		photonView = GetComponent<PhotonView> ();
 		GameManager.OnPlayerSet += OnGameReady;
 		soundSource = GetComponent<AudioSource>();
-	}
-
-	public override void Action ()
-	{
-		if (isFull) {
-			isFull = false;
-			snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
-			snap.SetTexture(receivedTexture);
-			ActionName = "Send";
-			soundSource.clip = inboxSound;
-			soundSource.Play();
-		} else {
-
-
-			TriggerMailBox ();
-		}
-	}
-
-	protected override void PlayerEnter(){
-		if (isFull) {
-			ActionName = "Read";
-		} else {
-			ActionName = "Send";
-		}
 	}
 
 	[RPC]
