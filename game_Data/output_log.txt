@@ -16,7 +16,7 @@ Platform assembly: C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Mana
 Loading C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.089 seconds
+- Completed reload, in  0.064 seconds
 desktop: 1366x768 40Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -29,6 +29,12 @@ The referenced script on this Behaviour is missing!
 The referenced script on this Behaviour is missing!
  
 (Filename:  Line: 1783)
+
+UnloadTime: 3.924274 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 6316.
+Total: 1.754540 ms (FindLiveObjects: 0.262644 ms CreateObjectMapping: 0.055048 ms MarkObjects: 0.732419 ms  DeleteObjects: 0.145084 ms)
 
 Update() was called by Unity. Scene is loaded. Let's connect to the Photon Master Server. Calling: PhotonNetwork.ConnectUsingSettings();
  
@@ -74,9 +80,9 @@ The referenced script on this Behaviour is missing!
  
 (Filename:  Line: 1783)
 
-UnloadTime: 2.505153 ms
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+UnloadTime: 7.394635 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 892.
-Total: 1.280100 ms (FindLiveObjects: 0.035921 ms CreateObjectMapping: 0.015861 ms MarkObjects: 0.568674 ms  DeleteObjects: 0.113361 ms)
+Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 940.
+Total: 2.340942 ms (FindLiveObjects: 0.032189 ms CreateObjectMapping: 0.027990 ms MarkObjects: 0.682036 ms  DeleteObjects: 0.991331 ms)
 
