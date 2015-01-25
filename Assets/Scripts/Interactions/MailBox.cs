@@ -41,7 +41,7 @@ public class MailBox : MonoBehaviour {
 		if (snap.TextureToSend != null) {
 			Debug.Log("RPC");
 			Debug.Log(snap.TextureToSend.EncodeToPNG().Length);
-			photonView.RPC("ListenMailBox", PhotonTargets.Others, snap.TextureToSend.EncodeToPNG());
+			photonView.RPC("ListenMailBox", PhotonTargets.Others, snap.TextureToSend.EncodeToJPG());
 		}
 	}
 		
