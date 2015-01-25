@@ -6,7 +6,7 @@ public class TutoManager : MonoBehaviour {
 	public GameObject[] allLabels;
 	private int i;
 	// Use this for initialization
-	void Start () {
+	public void StartTuto () {
 		StartCoroutine("ChangeAnim");
 	}
 	
