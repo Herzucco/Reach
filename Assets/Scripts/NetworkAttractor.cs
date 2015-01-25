@@ -17,5 +17,7 @@ public class NetworkAttractor : MonoBehaviour {
 		for(int i = 0; i < bodies.Length; i++){
 			bodies[i].Attract();
 		}
+
+		GameManager.OnPlayerSet -= OnGameReady;
 	}
 }

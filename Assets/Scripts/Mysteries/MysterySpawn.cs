@@ -36,5 +36,6 @@ public class MysterySpawn : MonoBehaviour {
 		} else {
 			TwoPrefab.SetActive(true);
 		}
+		GameManager.OnPlayerSet -= SpawnPrefab;
 	}
 }

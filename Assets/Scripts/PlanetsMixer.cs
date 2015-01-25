@@ -29,8 +29,8 @@ public class PlanetsMixer : MonoBehaviour {
 	}
 
 	void SetPlanetes(){
-		planetes [0].position = new Vector3 (0, distanceByStep / 2 * totalSteps,0);
-		planetes [1].position = new Vector3 (0, -distanceByStep / 2 * totalSteps,0);
+		//planetes [0].position = new Vector3 (0, distanceByStep / 2 * totalSteps,0);
+		//planetes [1].position = new Vector3 (0, -distanceByStep / 2 * totalSteps,0);
 	}
 
 	void Update(){

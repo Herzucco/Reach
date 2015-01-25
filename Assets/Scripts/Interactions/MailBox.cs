@@ -48,5 +48,7 @@ public class MailBox : MonoBehaviour {
 		} else {
 			transform.position = twoSpawn.position;
 		}
+
+		GameManager.OnPlayerSet -= OnGameReady;
 	}
 }

@@ -11,5 +11,9 @@ public class StatueArea : ContextAction {
 
 	public override void Action(){
 		hasPlayer = true;
+		GameObject go = GameObject.FindGameObjectWithTag ("InteractSound");
+		if (go != null) {
+			go.GetComponent<AudioSource> ().Play ();
+		}
 	}
 }
