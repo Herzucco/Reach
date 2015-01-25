@@ -24,10 +24,10 @@ public class MailBox : MonoBehaviour {
 	}
 
 	[RPC]
-	protected virtual void ListenMailBox(Color[] receivedByte){
+	protected virtual void ListenMailBox(byte[] receivedByte){
 		Debug.Log ("oker");
 		receivedTexture = new Texture2D(1, 1);
-		receivedTexture.SetPixels(receivedByte);
+		receivedTexture.LoadImage(receivedByte);
 		isFull = true;
 		snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
 		snap.SetTexture(receivedTexture);
@@ -41,7 +41,7 @@ public class MailBox : MonoBehaviour {
 		if (snap.TextureToSend != null) {
 			Debug.Log("RPC");
 			Debug.Log(snap.TextureToSend.EncodeToPNG().Length);
-			photonView.RPC("ListenMailBox", PhotonTargets.Others, snap.TextureToSend.GetPixels());
+			photonView.RPC("ListenMailBox", PhotonTargets.Others, snap.TextureToSend.EncodeToPNG());
 		}
 	}
 		
