@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof (PhotonView))]
-public class MailBox : ContextAction {
+public class MailBox : MonoBehaviour {
 	public Transform oneSpawn;
 	public Transform twoSpawn;
 
@@ -23,48 +23,21 @@ public class MailBox : ContextAction {
 		soundSource = GetComponent<AudioSource>();
 	}
 
-	public override void Action ()
-	{
-		if (isFull) {
-			Debug.Log("Bouyou");
-
-			isFull = false;
-			snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
-			snap.SetTexture(receivedTexture);
-			ActionName = "Send";
-			soundSource.clip = inboxSound;
-			soundSource.Play();
-		} else {
-			Debug.Log("Incroyable");
-
-			snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
-
-			TriggerMailBox ();
-		}
-	}
-
-	protected override void PlayerEnter(){
-		if (isFull) {
-			ActionName = "Read";
-		} else {
-			ActionName = "Send";
-		}
-	}
-
 	[RPC]
 	protected virtual void ListenMailBox(byte[] receivedByte){
 		receivedTexture = new Texture2D(1, 1);
 		receivedTexture.LoadImage(receivedByte);
 		isFull = true;
-		ActionName = "Read";
+		snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
+		snap.SetTexture(receivedTexture);
 
 		soundSource.clip = outboxSound;
 		soundSource.Play();
 	}
 	
 	public virtual void TriggerMailBox(){
+		snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
 		if (snap.TextureToSend != null) {
-			Debug.Log("olala");
 			photonView.RPC("ListenMailBox", PhotonTargets.Others, snap.TextureToSend.EncodeToPNG());
 		}
 	}
