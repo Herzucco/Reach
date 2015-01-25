@@ -44,7 +44,7 @@ public class MasterMind : Mystery {
 			if (_masterMindChangeColor[i].colorEnum == _enumColor[i])
             {
 
-				if(_masterMindControlColor[i].GetComponent<MasterAnswers>().rpced){
+				if(!_masterMindControlColor[i].GetComponent<MasterAnswers>().rpced){
 					_masterMindControlColor[i].renderer.material.color = Color.green;
 				}
 
@@ -53,7 +53,7 @@ public class MasterMind : Mystery {
             }
             else
             {
-				if(_masterMindControlColor[i].GetComponent<MasterAnswers>().rpced){
+				if(!_masterMindControlColor[i].GetComponent<MasterAnswers>().rpced){
 					_masterMindControlColor[i].renderer.material.color = Color.white;
 				}
 				phView.RPC("AlertBad", PhotonTargets.Others);
