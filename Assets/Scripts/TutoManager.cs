@@ -4,8 +4,14 @@ using System.Collections;
 public class TutoManager : MonoBehaviour {
 	public float animDuration;
 	public GameObject[] allLabels;
+	public bool goNow = false;
 	private int i;
 	// Use this for initialization
+	void Start(){
+		if (goNow) {
+			StartTuto();
+		}
+	}
 	public void StartTuto () {
 		StartCoroutine("ChangeAnim");
 	}

@@ -61,22 +61,17 @@ public class PlayerSnap : MonoBehaviour {
 	}
 
 	IEnumerator Snap(){
-		Rect old = new Rect (0, 0, 1, 1);
-
-		Camera.main.rect = new Rect (0.25f, 0.25f, 0.5f, 0.5f);
 
 		Texture2D texture = new Texture2D ((int)Camera.main.pixelWidth, (int)Camera.main.pixelHeight, TextureFormat.RGB24, true);
-		texture.ReadPixels(new Rect(Camera.main.pixelWidth/4, Camera.main.pixelHeight/4, Camera.main.pixelWidth+Camera.main.pixelWidth/4, Camera.main.pixelHeight+Camera.main.pixelHeight/4), 0, 0);
+		texture.ReadPixels(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), 0, 0);
 		texture.Apply ();
 
 		textureToSend = texture;
 		Debug.Log ("snap taken");
 		FindObjectOfType<MailBox> ().TriggerMailBox();
-		Debug.Log ("oker");
+		soundSource.volume = 0.5f;
 		soundSource.Play();
-
-		yield return new WaitForSeconds (0.2f);
-		Camera.main.rect = old;
+		yield return null;
 	}
 
 	public void ShowPicture(){
