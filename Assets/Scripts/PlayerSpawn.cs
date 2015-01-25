@@ -17,5 +17,6 @@ public class PlayerSpawn : MonoBehaviour {
 		}
 
 		Destroy (gameObject);
+		GameManager.OnPlayerSet -= OnGameReady;
 	}
 }

@@ -24,6 +24,10 @@ public class MasterMindChangeColor : ContextAction {
     }
     public override void Action()
     {
+		GameObject go = GameObject.FindGameObjectWithTag ("InteractSound");
+		if (go != null) {
+			go.GetComponent<AudioSource> ().Play ();
+		}
         index++;
         if(index > _color.Length -1)
         {
