@@ -40,16 +40,20 @@ public class PlanetsMixer : MonoBehaviour {
 	}
 	
 	IEnumerator NewState(){
-		MovePlayer mp = GameObject.FindObjectOfType<MovePlayer> ();
-		mp.moving = false;
-		Transform closestPlanete = Vector3.Distance (mp.transform.position, planetes [0].position) < Vector3.Distance (mp.transform.position, planetes [1].position) ? planetes [0] : planetes [1];
-		mp.transform.parent = closestPlanete;
+		MovePlayer[] mp = GameObject.FindObjectsOfType<MovePlayer> ();
+		for(int i= 0; i < mp.Length; i++){
+			mp[i].moving = false;
+			Transform closestPlanete = Vector3.Distance (mp[i].transform.position, planetes [0].position) < Vector3.Distance (mp[i].transform.position, planetes [1].position) ? planetes [0] : planetes [1];
+			mp[i].transform.parent = closestPlanete;
+		}
 		while(planetes [0].position != new Vector3 (0, distanceByStep / 2 * (totalSteps - currentState) ,0)){
 			planetes[0].position = Vector3.MoveTowards(planetes[0].position, new Vector3 (0, distanceByStep / 2 * (totalSteps - currentState) ,0),1f);
 			planetes[1].position = Vector3.MoveTowards(planetes[1].position, new Vector3 (0, -distanceByStep / 2 * (totalSteps - currentState) ,0),1f);
 			yield return null;
 		}
-		mp.moving = true;
-		mp.transform.parent = mp.transform.root;
+		for(int i= 0; i < mp.Length; i++){
+			mp[i].moving = true;			
+			mp[i].transform.parent = null;
+		}
 	}
 }
