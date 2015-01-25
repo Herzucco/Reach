@@ -16,6 +16,8 @@ public class MailBox : MonoBehaviour {
 	public AudioClip inboxSound;
 	public AudioClip outboxSound;
 	protected AudioSource soundSource;
+	private int times = 0;
+	private byte[] b;
 
 	protected virtual void Start(){
 		photonView = GetComponent<PhotonView> ();
@@ -25,15 +27,28 @@ public class MailBox : MonoBehaviour {
 
 	[RPC]
 	protected virtual void ListenMailBox(byte[] receivedByte){
-		Debug.Log ("walala");
-		receivedTexture = new Texture2D(1, 1);
-		receivedTexture.LoadImage(receivedByte);
-		isFull = true;
-		snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
-		snap.SetTexture(receivedTexture);
+		times++;
+		if (times >= 2) {
+			byte[] c = new byte[receivedByte.Length*2];
+			for(int i = 0; i < c.Length; i++){
+				if(i < receivedByte.Length){
+					c[i] = b[i];
+				}else{
+					c[i] = receivedByte[i];
+				}
+			}
+			receivedTexture = new Texture2D(1, 1);
+			receivedTexture.LoadImage(c);
+			isFull = true;
+			snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
+			snap.SetTexture(receivedTexture);
+			
+			soundSource.clip = outboxSound;
+			soundSource.Play();
+		}else{
+			b = receivedByte;
+		}
 
-		soundSource.clip = outboxSound;
-		soundSource.Play();
 	}
 	
 	public virtual void TriggerMailBox(){
@@ -41,7 +56,20 @@ public class MailBox : MonoBehaviour {
 		if (snap.TextureToSend != null) {
 			Debug.Log("RPC");
 			Debug.Log(snap.TextureToSend.EncodeToPNG().Length);
-			photonView.RPC("ListenMailBox", PhotonTargets.Others, snap.TextureToSend.EncodeToPNG());
+			byte[] grotruk = snap.TextureToSend.EncodeToPNG();
+			byte[] petitbidule = new byte[grotruk.Length/2];
+			byte[] petitbidule2 = new byte[grotruk.Length/2];
+			for(int i = 0; i < grotruk.Length/2; i++){
+				petitbidule[i] = grotruk[i];
+			} 
+
+			for(int i = grotruk.Length/2 - 1; i < grotruk.Length; i++){
+				petitbidule2[i] = grotruk[i];
+			} 
+
+			Debug.Log(petitbidule.Length);
+			photonView.RPC("ListenMailBox", PhotonTargets.Others, petitbidule);
+			photonView.RPC("ListenMailBox", PhotonTargets.Others, petitbidule2);
 		}
 	}
 		
