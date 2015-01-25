@@ -22,6 +22,7 @@ public class FinalState : FSMState<MysteryManager> {
 	{
 		if(Vector3.Distance(players[0].transform.position, players[1].transform.position) <= 5){
 			//Fin du Game
+			Application.LoadLevel("Cinematic");
 		}
 	}
 	
