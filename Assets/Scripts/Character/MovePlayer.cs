@@ -47,7 +47,7 @@ public class MovePlayer : MonoBehaviour {
 
 	[HideInInspector]
 	public bool helloing;
-
+	
 	void Awake(){
 		helloing = false;
 		Screen.showCursor = false;
