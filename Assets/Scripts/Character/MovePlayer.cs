@@ -44,6 +44,9 @@ public class MovePlayer : MonoBehaviour {
 	float currentActionInput;
 	float oldJumpInput;
 	float currentJumpInput;
+	public float SetMoveVecX{
+		set{moveVec.x = value;}
+	}
 
 	[HideInInspector]
 	public bool helloing;
@@ -86,7 +89,7 @@ public class MovePlayer : MonoBehaviour {
 			currentAction();
 		}
 		moveVec.z = Input.GetAxis ("Vertical");
-		rotY = Input.GetAxis ("Horizontal") * rotationSpeedY;
+
 		if((currentJumpInput > 0.5 && !grounded) || (grounded && currentJumpInput == 1 && oldJumpInput == 0)){
 			jumping = true;
 			if(grounded)
@@ -99,7 +102,6 @@ public class MovePlayer : MonoBehaviour {
 			return;
 		Jump ();
 		mRigidbody.MovePosition (mTransform.position + mTransform.TransformDirection (moveVec * speed));
-		mTransform.Rotate (Vector3.up, rotY);
 	}
 
 

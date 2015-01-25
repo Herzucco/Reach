@@ -39,7 +39,6 @@ public class MasterMind : Mystery {
 
         for (int i = 0; i < _masterMindChangeColor.Length; i++)
         {
-			Debug.Log(" i : "+_masterMindChangeColor[i].colorEnum);
             if (_masterMindChangeColor[i].colorEnum == _enumColor[i])
             {
                 _masterMindControlColor[i].renderer.material.color = Color.green;
