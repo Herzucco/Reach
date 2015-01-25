@@ -12,6 +12,10 @@ public class SlabCollision : Collision {
     }
     protected override void PlayerEnter(GameObject player)
     {
+		GameObject go = GameObject.FindGameObjectWithTag ("InteractSound");
+		if (go != null) {
+			go.GetComponent<AudioSource> ().Play ();
+		}
         if (_isActivated)
         {
             renderer.material.color = Color.red;
