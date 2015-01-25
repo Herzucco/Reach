@@ -11,12 +11,11 @@ public class MixColor : MonoBehaviour {
 	private Color middleColor;
 	private Renderer mRenderer;
 	private Color baseColor;
+	private Color currentColor;
 
 	void Awake(){
 		config = Resources.Load ("ColorConfig") as ColorConfigurator;
-		middleColor = new Color ((config.darkColor.r + config.lightColor.r) / 2,
-		                        (config.darkColor.g + config.lightColor.g) / 2,
-		                        (config.darkColor.b + config.lightColor.b));
+		middleColor = myColor == AmbiantColors.DARKCOLOR ? config.lightColor : config.darkColor;
 		mRenderer = renderer;
 		baseColor = myColor == AmbiantColors.DARKCOLOR ? config.darkColor : config.lightColor;
 
@@ -27,8 +26,10 @@ public class MixColor : MonoBehaviour {
 	}
 
 	void Update(){
-		Color targetColor = Color.Lerp (baseColor, middleColor, mixer.CurrentState / mixer.StateNumbers);
+		Debug.Log ((float)mixer.CurrentState / (float)mixer.StateNumbers);
+		Color targetColor = Color.Lerp (baseColor, middleColor, (float)mixer.CurrentState / (float)mixer.StateNumbers);
 		renderer.material.color = Color.Lerp (renderer.material.color, targetColor, 0.1f);
+		currentColor = targetColor; 
 	}
 
 }
