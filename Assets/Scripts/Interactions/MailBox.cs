@@ -25,6 +25,7 @@ public class MailBox : MonoBehaviour {
 
 	[RPC]
 	protected virtual void ListenMailBox(byte[] receivedByte){
+		Debug.Log ("walala");
 		receivedTexture = new Texture2D(1, 1);
 		receivedTexture.LoadImage(receivedByte);
 		isFull = true;
@@ -38,6 +39,8 @@ public class MailBox : MonoBehaviour {
 	public virtual void TriggerMailBox(){
 		snap = Camera.main.gameObject.GetComponent<PlayerSnap> ();
 		if (snap.TextureToSend != null) {
+			Debug.Log("RPC");
+			Debug.Log(snap.TextureToSend.EncodeToPNG().Length);
 			photonView.RPC("ListenMailBox", PhotonTargets.Others, snap.TextureToSend.EncodeToPNG());
 		}
 	}
