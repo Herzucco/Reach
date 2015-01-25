@@ -16,7 +16,7 @@ Platform assembly: C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Mana
 Loading C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.064 seconds
+- Completed reload, in  0.059 seconds
 desktop: 1366x768 40Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -30,11 +30,11 @@ The referenced script on this Behaviour is missing!
  
 (Filename:  Line: 1783)
 
-UnloadTime: 3.924274 ms
+UnloadTime: 8.754509 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 6316.
-Total: 1.754540 ms (FindLiveObjects: 0.262644 ms CreateObjectMapping: 0.055048 ms MarkObjects: 0.732419 ms  DeleteObjects: 0.145084 ms)
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 6632.
+Total: 2.074565 ms (FindLiveObjects: 0.265910 ms CreateObjectMapping: 0.062512 ms MarkObjects: 0.985733 ms  DeleteObjects: 0.149749 ms)
 
 Update() was called by Unity. Scene is loaded. Let's connect to the Photon Master Server. Calling: PhotonNetwork.ConnectUsingSettings();
  
@@ -44,11 +44,7 @@ OnConnectedToMaster() was called by PUN. Now this client is connected and could 
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one. Calling: PhotonNetwork.CreateRoom(null, new RoomOptions() {maxPlayers = 4}, null);
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-1
+2
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
@@ -80,15 +76,9 @@ The referenced script on this Behaviour is missing!
  
 (Filename:  Line: 1783)
 
-UnloadTime: 7.394635 ms
+UnloadTime: 20.246494 ms
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 940.
-Total: 2.340942 ms (FindLiveObjects: 0.032189 ms CreateObjectMapping: 0.027990 ms MarkObjects: 0.682036 ms  DeleteObjects: 0.991331 ms)
-
-UnloadTime: 0.512226 ms
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1686.
-Total: 1.465771 ms (FindLiveObjects: 0.066244 ms CreateObjectMapping: 0.045251 ms MarkObjects: 0.772072 ms  DeleteObjects: 0.008397 ms)
+Unloading 159 unused Assets to reduce memory usage. Loaded Objects now: 1252.
+Total: 8.662606 ms (FindLiveObjects: 0.114761 ms CreateObjectMapping: 0.196400 ms MarkObjects: 2.484160 ms  DeleteObjects: 4.201847 ms)
 

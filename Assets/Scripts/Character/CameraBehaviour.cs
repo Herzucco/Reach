@@ -36,7 +36,7 @@ public class CameraBehaviour : MonoBehaviour {
 		currentSwitchInput = 0;
 		prevSwitchInput = 0;
 		mTransform = transform;
-		currentStyle = camStyle.TPS;
+		currentStyle = camStyle.FPS;
 	}
 
 	void Update(){
@@ -45,7 +45,7 @@ public class CameraBehaviour : MonoBehaviour {
 		if(currentSwitchInput > 0.9 && prevSwitchInput < 0.2){
 			Switch ();
 		}
-		if(currentStyle == camStyle.TPS){
+		if(currentStyle == camStyle.TPS && false){
 			rotY = Input.GetAxis ("Horizontal") * rotationSpeedY;
 			rotX = 0;
 		}else{
