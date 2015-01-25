@@ -36,7 +36,7 @@ public class CameraBehaviour : MonoBehaviour {
 		currentSwitchInput = 0;
 		prevSwitchInput = 0;
 		mTransform = transform;
-		currentStyle = camStyle.TPS;
+		currentStyle = camStyle.FPS;
 	}
 
 	void Update(){
