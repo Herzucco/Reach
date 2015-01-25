@@ -96,7 +96,7 @@ public class PlanetsMixer : MonoBehaviour {
 			mp[i].moving = true;			
 			mp[i].transform.parent = null;
 			mp[i].rigidbody.WakeUp();
-			mp[i].rigidbody.velocity.Set(Vector3.zero);
+            mp[i].rigidbody.velocity.Set(0, 0, 0);
 		}
 	}
 }
