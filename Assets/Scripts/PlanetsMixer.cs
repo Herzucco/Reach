@@ -67,7 +67,6 @@ public class PlanetsMixer : MonoBehaviour {
 	}
 
 	IEnumerator MixPlanetesCoroutine(){
-		FixPlayers ();
 		planetes [0].parent = transform.GetChild(0);
 		planetes [1].parent = transform.GetChild(1);
 		planetes [0].transform.localPosition = Vector3.zero;
@@ -75,6 +74,7 @@ public class PlanetsMixer : MonoBehaviour {
 		planetes [0].transform.localRotation = Quaternion.identity;
 		planetes [1].transform.localRotation = Quaternion.identity;
 		animation.Play ();
+		FixPlayers ();
 		yield return new WaitForSeconds (mixClip.length);
 		FreePlayers ();
 		for(int i = 0; i< objectsToRemove.Length; i++){
@@ -85,8 +85,7 @@ public class PlanetsMixer : MonoBehaviour {
 	void FixPlayers(){
 		for(int i= 0; i < mp.Length; i++){
 			mp[i].moving = false;
-			mp[i].rigidbody.Sleep();
-			Transform closestPlanete = Vector3.Distance (mp[i].transform.position, planetes [0].position) < Vector3.Distance (mp[i].transform.position, planetes [1].position) ? planetes [0] : planetes [1];
+			Transform closestPlanete = Vector3.Distance (mp[i].transform.position, planetes [0].position) < Vector3.Distance (mp[i].transform.position, planetes [1].position) ? planetes [0].transform : planetes [1].transform;
 			mp[i].transform.parent = closestPlanete;
 		}
 	}
@@ -95,7 +94,6 @@ public class PlanetsMixer : MonoBehaviour {
 		for(int i= 0; i < mp.Length; i++){
 			mp[i].moving = true;			
 			mp[i].transform.parent = null;
-			mp[i].rigidbody.WakeUp();
             mp[i].rigidbody.velocity.Set(0, 0, 0);
 		}
 	}
