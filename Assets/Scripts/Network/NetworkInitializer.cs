@@ -15,6 +15,8 @@ public class NetworkInitializer : Photon.MonoBehaviour
 	private int playerCount = 0;
 	private bool ConnectInUpdate = true;
 	private bool endUpdate = false;
+	private GameObject bails;
+	private GameObject player;
 	public virtual void Start()
 	{
 		PhotonNetwork.autoJoinLobby = false;    // we join randomly. always. no need to join a lobby to get the list of rooms.
@@ -38,9 +40,19 @@ public class NetworkInitializer : Photon.MonoBehaviour
 				PhotonNetwork.LeaveRoom();
 				Application.LoadLevel("Deco");
 				Screen.showCursor = true;
-			}else if(newCount > playerCount){
+			}else if(newCount > playerCount && newCount > 1){
 				UIRoot.SetActive(false);
 				Scene.SetActive(true);
+
+				if(player != null){
+					player.SetActive(true);
+
+				}
+				if(bails != null){
+					bails.SetActive(true);
+					bails.GetComponent<TutoManager>().StartTuto();
+				}
+
 			}
 			
 			playerCount = newCount;
@@ -74,8 +86,14 @@ public class NetworkInitializer : Photon.MonoBehaviour
 		Debug.Log (PhotonNetwork.playerList.Length);
 		if (PhotonNetwork.playerList.Length == 1) {
 			GameManager.player = Player.ONE;
-			UIRoot.SetActive(true);
 			Scene.SetActive(false);
+
+			player = GameObject.FindGameObjectWithTag("Player");
+			bails = FindObjectOfType<TutoManager>().gameObject;
+
+			player.SetActive(false);
+			bails.SetActive(false);
+			Debug.Log(bails);
 		} else {
 			GameManager.player = Player.TWO;
 		}
