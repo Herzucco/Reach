@@ -57,13 +57,5 @@ public class MasterMindChangeColor : ContextAction {
        }
     }
 
-	[RPC]
-	public void AlertResolve(){
-		sphere.renderer.material.color = Color.green;
-	}
 
-	[RPC]
-	public void AlertBad(){
-		sphere.renderer.material.color = Color.white;
-	}
 }
