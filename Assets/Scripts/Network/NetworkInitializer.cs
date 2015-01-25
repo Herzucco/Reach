@@ -20,6 +20,7 @@ public class NetworkInitializer : Photon.MonoBehaviour
 	public virtual void Start()
 	{
 		PhotonNetwork.autoJoinLobby = false;    // we join randomly. always. no need to join a lobby to get the list of rooms.
+		Screen.lockCursor = true;
 	}
 	
 	public virtual void Update()
