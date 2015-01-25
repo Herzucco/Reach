@@ -56,4 +56,14 @@ public class MasterMindChangeColor : ContextAction {
            _enumColor = EnumColor.BLUE;
        }
     }
+
+	[RPC]
+	public void AlertResolve(){
+		sphere.renderer.material.color = Color.green;
+	}
+
+	[RPC]
+	public void AlertBad(){
+		sphere.renderer.material.color = Color.white;
+	}
 }

@@ -31,6 +31,7 @@ public class MasterMind : Mystery {
         {
             _enumColor[i] = (EnumColor)Random.Range(0, 3);
         }
+
         publicColor = _enumColor;
 	}
 	
@@ -39,14 +40,18 @@ public class MasterMind : Mystery {
 
         for (int i = 0; i < _masterMindChangeColor.Length; i++)
         {
-            if (_masterMindChangeColor[i].colorEnum == _enumColor[i])
+			PhotonView phView = _masterMindControlColor[i].GetComponent<PhotonView>();
+			if (_masterMindChangeColor[i].colorEnum == _enumColor[i])
             {
+
                 _masterMindControlColor[i].renderer.material.color = Color.green;
+				phView.RPC("AlertResolve", PhotonTargets.Others);
                 colorToReach++;
             }
             else
             {
-                _masterMindControlColor[i].renderer.material.color = Color.red;
+                _masterMindControlColor[i].renderer.material.color = Color.white;
+				phView.RPC("AlertBad", PhotonTargets.Others);
             }
         }
 
