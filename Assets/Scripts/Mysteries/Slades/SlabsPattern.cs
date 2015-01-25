@@ -13,19 +13,23 @@ public class SlabsPattern : Mystery {
 
     private void Start()
     {
-        _slabs = GameObject.FindGameObjectsWithTag("Slabs");
-		_mysteriesSlab = new SlabCollision[_slabs.Length];
-
-        for(int i = 0; i < _slabs.Length; i++)
-        {
-            if( _slabs[i].GetComponent<SlabCollision>() != null)
-                _mysteriesSlab[i] = _slabs[i].GetComponent<SlabCollision>();
-        }
+       
     }
 
     private void Update()
     {
-        for (int i = 0; i < _slabs.Length; i++)
+		if (_slabs.Length == 0) {
+			_slabs = GameObject.FindGameObjectsWithTag("Slabs");
+			_mysteriesSlab = new SlabCollision[_slabs.Length];
+			
+			for(int i = 0; i < _slabs.Length; i++)
+			{
+				if( _slabs[i].GetComponent<SlabCollision>() != null)
+					_mysteriesSlab[i] = _slabs[i].GetComponent<SlabCollision>();
+			}
+		}
+
+		for (int i = 0; i < _slabs.Length; i++)
         {
             if (_mysteriesSlab[i] != null)
             {
