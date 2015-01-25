@@ -39,15 +39,22 @@ public class MasterMind : Mystery {
 
         for (int i = 0; i < _masterMindChangeColor.Length; i++)
         {
-			Debug.Log(" i : "+_masterMindChangeColor[i].colorEnum);
+			MasterMindAnswers answ = _masterMindControlColor[i].GetComponent<MasterMindAnswers>();
+			//Debug.Log(" i : "+_masterMindChangeColor[i].colorEnum);
             if (_masterMindChangeColor[i].colorEnum == _enumColor[i])
             {
-                _masterMindControlColor[i].renderer.material.color = Color.green;
+				if(!answ.rpced){
+					_masterMindControlColor[i].renderer.material.color = Color.green;
+				}
+				_masterMindControlColor[i].GetComponent<PhotonView>().RPC("AlertResolve", PhotonTargets.Others);
                 colorToReach++;
             }
             else
             {
-                _masterMindControlColor[i].renderer.material.color = Color.red;
+				if(!answ.rpced){
+                	_masterMindControlColor[i].renderer.material.color = Color.red;
+				}
+				_masterMindControlColor[i].GetComponent<PhotonView>().RPC("AlertWrong", PhotonTargets.Others);
             }
         }
 
