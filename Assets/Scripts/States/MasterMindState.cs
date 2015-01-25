@@ -12,6 +12,7 @@ public class MasterMindState : FSMState<MysteryManager> {
 
 	private static int MasterMindDone = 0;
 	private PlanetsMixer mixer;
+	public bool canBeDone = false;
 
 	void Start(){
 		mixer = GameObject.FindObjectOfType<PlanetsMixer> ();
@@ -28,6 +29,8 @@ public class MasterMindState : FSMState<MysteryManager> {
 	}
 
 	public override void MysterySolved(MysteryManager o, FSM<MysteryManager> fsm, Mysteries id){
+		if(!canBeDone)
+			return;
 		mixer = GameObject.FindObjectOfType<PlanetsMixer> ();
 		if (id == Mysteries.Hello) {
 			MasterMindDone++;

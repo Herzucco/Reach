@@ -34,6 +34,7 @@ public class HelloState : FSMState<MysteryManager> {
 			if(helloDone >= 2){
 				mixer.NewState(1);
 				fsm.ChangeState(MysterySlabsState.Instance);
+				MysterySlabsState.Instance.canBeDone = true;
 			}
 		}
 	}
