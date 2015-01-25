@@ -11,6 +11,11 @@ public class MysterySlabsState : FSMState<MysteryManager> {
 	}
 
 	private static int slabsDone = 0;
+	private PlanetsMixer mixer;
+	
+	void Start(){
+		mixer = GameObject.FindObjectOfType<PlanetsMixer> ();
+	}
 
 	public override void Execute(MysteryManager o, FSM<MysteryManager> fsm)
 	{
@@ -26,7 +31,8 @@ public class MysterySlabsState : FSMState<MysteryManager> {
 		if (id == Mysteries.SlabSign) {
 			slabsDone++;
 			if(slabsDone >= 2){
-				Debug.Log("Success");
+				mixer.NewState(1);
+				fsm.ChangeState(new MasterMindState());
 			}
 		}
 	}
