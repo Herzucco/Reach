@@ -8,6 +8,8 @@ public class CameraBehaviour : MonoBehaviour {
 		TPS
 	}
 	[SerializeField]
+	float maxAngleX = 90;
+	[SerializeField]
 	Transform player;
 	[SerializeField]
 	float rotationSpeedY;
@@ -27,6 +29,7 @@ public class CameraBehaviour : MonoBehaviour {
 	float prevSwitchInput;
 	float rotY = 0;
 	float rotX = 0;
+	float XAxisAngle = 0;
 
 	void Awake(){
 		cam = GetComponent<Camera> ();
@@ -48,13 +51,19 @@ public class CameraBehaviour : MonoBehaviour {
 		}else{
 			rotY = Input.GetAxis ("Mouse X") / 4;
 			rotX = Input.GetAxis("Mouse Y") /4;
+			XAxisAngle += Input.GetAxis("Mouse Y") /4;
+			if(XAxisAngle > maxAngleX)
+				XAxisAngle = maxAngleX;
+			if(XAxisAngle < -maxAngleX)
+				XAxisAngle = -maxAngleX;
 			player.GetComponent<MovePlayer>().SetMoveVecX = Input.GetAxis("Horizontal");
 		}
 	}
 
 	void FixedUpdate(){		
 		player.Rotate (Vector3.up, rotY);
-		mTransform.Rotate (Vector3.left, rotX);
+		mTransform.localRotation = Quaternion.identity;
+		mTransform.Rotate (Vector3.left, XAxisAngle);
 	}
 
 	void Switch(){

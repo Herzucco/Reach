@@ -16,7 +16,7 @@ Platform assembly: C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Mana
 Loading C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\Bobby Watson\Documents\projects\Reach\game_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.062 seconds
+- Completed reload, in  0.089 seconds
 desktop: 1366x768 40Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -38,7 +38,11 @@ OnConnectedToMaster() was called by PUN. Now this client is connected and could 
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-2
+OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one. Calling: PhotonNetwork.CreateRoom(null, new RoomOptions() {maxPlayers = 4}, null);
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+1
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
@@ -70,9 +74,9 @@ The referenced script on this Behaviour is missing!
  
 (Filename:  Line: 1783)
 
-UnloadTime: 2.915681 ms
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+UnloadTime: 2.505153 ms
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 879.
-Total: 1.295029 ms (FindLiveObjects: 0.038253 ms CreateObjectMapping: 0.017727 ms MarkObjects: 0.561210 ms  DeleteObjects: 0.120825 ms)
+Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 892.
+Total: 1.280100 ms (FindLiveObjects: 0.035921 ms CreateObjectMapping: 0.015861 ms MarkObjects: 0.568674 ms  DeleteObjects: 0.113361 ms)
 
