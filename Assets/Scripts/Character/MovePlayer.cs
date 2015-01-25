@@ -74,7 +74,7 @@ public class MovePlayer : MonoBehaviour {
 			StartCoroutine(Hello());
 		}
 		anim.SetFloat ("speed", Mathf.Abs (moveVec.x) + Mathf.Abs (moveVec.z));
-		anim.SetBool ("jumping", !grounded);
+		anim.SetBool ("jumping", jumping);
 		anim.SetBool ("hello", helloing);
 		if(!moving)
 			return;
@@ -87,7 +87,7 @@ public class MovePlayer : MonoBehaviour {
 		}
 		moveVec.z = Input.GetAxis ("Vertical");
 		rotY = Input.GetAxis ("Horizontal") * rotationSpeedY;
-		if((currentJumpInput > 0.5 && !grounded)){
+		if((currentJumpInput > 0.5 && !grounded) || (grounded && currentJumpInput == 1 && oldJumpInput == 0)){
 			jumping = true;
 			if(grounded)
 				_jumpedTime = 0;
